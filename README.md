@@ -1,4 +1,5 @@
-wildhacks
-=========
+#Wildhacks @ Northwestern University
+===================================
 
-WildHacks NU project
+##Meetings
+First meeting: 11/19 2:00PM, Grainger Library 414
