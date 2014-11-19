@@ -1,4 +1,0 @@
-wildhacks
-=========
-
-WildHacks NU project
