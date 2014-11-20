@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7pB-s5-SOu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Login View Controller-->
         <scene sceneID="PgZ-bc-rQT">
             <objects>
-                <viewController id="7pB-s5-SOu" customClass="LoginViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7pB-s5-SOu" customClass="LoginViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lEe-ea-HA9"/>
                         <viewControllerLayoutGuide type="bottom" id="Y0f-jn-2zi"/>
@@ -26,7 +26,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -126,7 +126,7 @@
         <!--Posts-->
         <scene sceneID="Bqo-13-bof">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vxn-dR-ule" customClass="PostViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vxn-dR-ule" customClass="PostViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bcD-A5-NVp"/>
                         <viewControllerLayoutGuide type="bottom" id="Qjg-4T-V2c"/>
@@ -160,7 +160,7 @@
         <!--Chats-->
         <scene sceneID="7ac-vB-0AV">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PVJ-rl-Lt1" customClass="ChatsViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PVJ-rl-Lt1" customClass="ChatsViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xU4-0K-9h9"/>
                         <viewControllerLayoutGuide type="bottom" id="6kQ-q4-jII"/>
@@ -193,7 +193,7 @@
         <!--People View Controller-->
         <scene sceneID="0na-BN-VGM">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="26H-q8-0Ht" customClass="PeopleViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="26H-q8-0Ht" customClass="PeopleViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CBG-1Y-9Zr"/>
                         <viewControllerLayoutGuide type="bottom" id="EpF-sC-cey"/>
@@ -225,7 +225,7 @@
         <!--Me-->
         <scene sceneID="NZv-DP-PAs">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UTp-iB-17a" customClass="SelfViewController" customModule="meet_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UTp-iB-17a" customClass="SelfViewController" customModule="Meeet_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PJl-nb-p7m"/>
                         <viewControllerLayoutGuide type="bottom" id="Ji8-q6-OXl"/>
