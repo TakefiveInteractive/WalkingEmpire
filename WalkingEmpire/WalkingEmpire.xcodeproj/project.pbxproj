@@ -28,6 +28,10 @@
 		42893B1A1A1E815000155C15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0E1A1E815000155C15 /* OpenGLES.framework */; };
 		42893B1B1A1E815000155C15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0F1A1E815000155C15 /* QuartzCore.framework */; };
 		42893B1C1A1E815000155C15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B101A1E815000155C15 /* SystemConfiguration.framework */; };
+		42893B221A1EA46C00155C15 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 42893B211A1EA46C00155C15 /* circle.png */; };
+		42893B241A1EAAC000155C15 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 42893B231A1EAAC000155C15 /* bg.png */; };
+		42893B261A1EAB7D00155C15 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42893B251A1EAB7D00155C15 /* MapViewController.swift */; };
+		42893B281A1EACA500155C15 /* ImageDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42893B271A1EACA500155C15 /* ImageDrawer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,10 @@
 		42893B0F1A1E815000155C15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42893B101A1E815000155C15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		42893B1D1A1E839100155C15 /* WalkingEmpire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalkingEmpire-Bridging-Header.h"; sourceTree = "<group>"; };
+		42893B211A1EA46C00155C15 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		42893B231A1EAAC000155C15 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		42893B251A1EAB7D00155C15 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		42893B271A1EACA500155C15 /* ImageDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDrawer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +144,11 @@
 				42893B031A1E80BF00155C15 /* GoogleMaps.bundle */,
 				42893B011A1E805600155C15 /* GoogleMaps.framework */,
 				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
+				42893B211A1EA46C00155C15 /* circle.png */,
+				42893B231A1EAAC000155C15 /* bg.png */,
 				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
+				42893B271A1EACA500155C15 /* ImageDrawer.swift */,
+				42893B251A1EAB7D00155C15 /* MapViewController.swift */,
 				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
 				426680F31A1E4BEE00ACD53D /* Images.xcassets */,
 				426680F51A1E4BEE00ACD53D /* LaunchScreen.xib */,
@@ -254,6 +266,8 @@
 			files = (
 				426680F21A1E4BEE00ACD53D /* Main.storyboard in Resources */,
 				426680F71A1E4BEE00ACD53D /* LaunchScreen.xib in Resources */,
+				42893B241A1EAAC000155C15 /* bg.png in Resources */,
+				42893B221A1EA46C00155C15 /* circle.png in Resources */,
 				426680F41A1E4BEE00ACD53D /* Images.xcassets in Resources */,
 				42893B041A1E80BF00155C15 /* GoogleMaps.bundle in Resources */,
 			);
@@ -276,6 +290,8 @@
 				426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */,
 				426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */,
 				426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */,
+				42893B261A1EAB7D00155C15 /* MapViewController.swift in Sources */,
+				42893B281A1EACA500155C15 /* ImageDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +420,7 @@
 					"$(PROJECT_DIR)/WalkingEmpire",
 				);
 				INFOPLIST_FILE = WalkingEmpire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +439,7 @@
 					"$(PROJECT_DIR)/WalkingEmpire",
 				);
 				INFOPLIST_FILE = WalkingEmpire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
