@@ -9,3 +9,10 @@ $slim = new \Slim\Slim(array(
 
 $slim->setName("Walking Empire");
 
+class Result {
+	$
+}
+
+$slim->post('/update_location', function() {
+	
+});
