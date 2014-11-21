@@ -8,14 +8,46 @@
 
 import UIKit
 
+import MapKit
+
 class MapViewController: UIViewController {
 
+    @IBOutlet var map: MKMapView!
+
+    let latitude = 42.0534
+    let longitude = -87.672
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        initializeGameMap()
 
         // Do any additional setup after loading the view.
     }
 
+    func initializeGameMap(){
+        let span = MKCoordinateSpanMake(0.0005, 0.0005)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(latitude, longitude), span: span)
+        map.setRegion(region, animated: true)
+        
+        //3
+        let annotation = MKPointAnnotation()
+        annotation.setCoordinate(CLLocationCoordinate2DMake(latitude, longitude))
+        annotation.title = "Big Ben"
+        annotation.subtitle = "London"
+        map.addAnnotation(annotation)
+        
+        addOverlay()
+
+    }
+
+    func addOverlay(){
+        var overlay: MKOverlayView = MKOverlayView(frame: CGRectMake(0, 0, 100, 100))
+        overlay.backgroundColor = UIColor.redColor()
+        map.addOverlay(overlay, level: MKOverlayLevel.AboveLabels)
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
