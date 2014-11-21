@@ -1,5 +1,13 @@
 <?php
+// load Slim and Symfony PSR-0 autoloader
 require 'vendor/autoload.php';
+
+use Symfony\Component\ClassLoader\UniversalClassLoader;
+
+$loader = new UniversalClassLoader();
+$loader->register();
+
+$loader->registerNamespace('WalkingEmpire', __DIR__);
 
 // create router instance
 $slim = new \Slim\Slim(array(
@@ -9,10 +17,10 @@ $slim = new \Slim\Slim(array(
 
 $slim->setName("Walking Empire");
 
-class Result {
-	$
-}
-
-$slim->post('/update_location', function() {
-	
+$slim->get('/update_location', function() {
+	echo json_encode(new \WalkingEmpire\LocationResponse());	
 });
+
+$slim->run();
+
+
