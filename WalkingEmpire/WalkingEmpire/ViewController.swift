@@ -9,23 +9,11 @@
 import UIKit
 
 
-class ViewController: UIViewController, GMSMapViewDelegate {
+class ViewController: UIViewController {
 
-    var map: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.23, zoom:6)
-        
-        map = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        map.myLocationEnabled = true
-        self.view = map
-        
-        var marker = GMSMarker(position: CLLocationCoordinate2DMake(-33.86, 151.20))
-        marker.title = "sdfds"
-        marker.snippet = "sdfdssddssdf"
-        marker.map = map
         
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyDwmBw4nTsGakIHYkGgWTDxfMlSWNNDCCQ")
         
-        LocationInfo.start()
+        LocationInfo.start(self.window?.rootViewController as ViewController)
+        
         // Override point for customization after application launch.
         return true
     }

@@ -14,18 +14,30 @@ var LocationInfo: LocationManager = LocationManager()
 
 class LocationManager: NSObject, CLLocationManagerDelegate{
    
+    var controller: ViewController!
 
     var theLocations = [CLLocation]()
     
-    var location = CLLocationManager()
+    var location:CLLocationManager = CLLocationManager()
     
-    func start(){
+    func start(control: ViewController){
+        
+        controller = control
         
         self.location.delegate = self
         self.location.desiredAccuracy = kCLLocationAccuracyBest
         self.location.startUpdatingLocation()
         
-        println(location)
+    }
+    
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+
+    
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -33,9 +45,34 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
         for var index: Int = 0; index < locations.count; index++ {
             theLocations.append(locations[index] as CLLocation)
         }
-        println(locations)
+        
+        if theLocations.count > 1{
+            var distance = calculateDistance() * 10000
+
+            if distance > 1{
+                MoneyResoursePopulationManager.addValue(distance)
+                (controller.childViewControllers[1] as ResourcesViewController).updateResources()
+                removeAlldistance()
+            }
+        }
+        (controller.childViewControllers[0] as MapViewController).updateLocation()
     }
     
+    func removeAlldistance(){
+        while theLocations.count > 1
+        {
+            theLocations.removeAtIndex(0)
+        }
+    }
+    
+    func calculateDistance()->Double{
+        var x :Double = theLocations[0].coordinate.latitude - theLocations[theLocations.count - 1].coordinate.latitude
+        var y :Double = theLocations[0].coordinate.longitude - theLocations[theLocations.count - 1].coordinate.longitude
+
+        var distance = sqrt(x * x + y * y)
+        
+        return distance
+    }
     
     func hasLocation()->Bool{
         if theLocations.count > 0{
