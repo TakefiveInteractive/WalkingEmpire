@@ -28,14 +28,20 @@ class SQLUtils {
 			return false;
 	}
 	
-	function update($table,$equivalenceStr, $parameter, $value) {
+	function update($table, $equivalenceStr, $parameter, $value) {
 		$queryStr = sprintf("UPDATE `%s` SET (%s) WHERE `%s` = '%s'", $table, $equivalenceStr, $parameter, $value);
 		$result = mysql_query($queryStr, $this->conn);
 		return $result;
 	}
 	
+	function delete($table, $parameter, $value) {
+		$queryStr = sprintf("DELETE FROM `%s` WHERE `%s` = '%s'", $table, $parameter, $value);
+		$result = mysql_query($queryStr, $this->conn);
+		return $result;
+	}
+	
 	function getRow($table, $parameter, $value) {
-		$result = $this->select("*", "users", $parameter, $value);
+		$result = $this->select("*", $table, $parameter, $value);
 		if ($result === false)
 			return false;
 		
