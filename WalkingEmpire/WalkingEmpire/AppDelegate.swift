@@ -10,14 +10,17 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyD2g_snC3MI9TOA2p-OddTobBxgqdXM7Qg")
+        GMSServices.provideAPIKey("AIzaSyDwmBw4nTsGakIHYkGgWTDxfMlSWNNDCCQ")
+        
+        LocationInfo.start(self.window?.rootViewController as ViewController)
+        
         // Override point for customization after application launch.
         return true
     }
