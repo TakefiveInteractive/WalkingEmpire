@@ -2,6 +2,8 @@
 
 namespace WalkingEmpire\Login;
 
+use Facebook\FacebookSession;
+
 class Result {
 
     public $success;
@@ -34,14 +36,14 @@ class Verifier {
 		// initialize facebook app
 		FacebookSession::setDefaultApplication('783258861766530', '20433de1149ff2619a5a681f25ea74ea');
 
-        if (!isset($_POST['token'])) {
-            if (validateAccessToken(strip_tags($_POST['token']))) {
-                return json_encode(new Result(true));
+        if (isset($_POST['token'])) {
+            if ($this->validateAccessToken(strip_tags($_POST['token']))) {
+                return new Result(true);
             } else {
-                return json_encode(new Result(false));
+                return new Result(false);
             }
         } else {
-            return json_encode(new Result(false));
+            return new Result(false);
         }
 	}
 
