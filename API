@@ -1,8 +1,11 @@
 Assuming at this stage the entire map is limited to a 1km x 1km rectangle, centered around Wildhacks auditorium.
 
 #Update position
+<<<<<<< HEAD
 URL: `/update_location`
 
+=======
+>>>>>>> IOS-Yu
 Client request
 ```
 {
