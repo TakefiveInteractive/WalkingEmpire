@@ -38,6 +38,7 @@
 		42893B1A1A1E815000155C15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0E1A1E815000155C15 /* OpenGLES.framework */; };
 		42893B1B1A1E815000155C15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0F1A1E815000155C15 /* QuartzCore.framework */; };
 		42893B1C1A1E815000155C15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B101A1E815000155C15 /* SystemConfiguration.framework */; };
+		8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		42893B0F1A1E815000155C15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42893B101A1E815000155C15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		42893B1D1A1E839100155C15 /* WalkingEmpire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalkingEmpire-Bridging-Header.h"; sourceTree = "<group>"; };
+		8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlPanel.png; path = UI/ControlPanel.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
 				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
 				420537771A206EA9000AFB3A /* MapViewController.swift */,
+				8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */,
 				4238D82C1A20EEB3006AE0A6 /* CoinBar.png */,
 				4238D82D1A20EEB3006AE0A6 /* MaterialBar.png */,
 				4238D82E1A20EEB3006AE0A6 /* PeopleBar.png */,
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */,
 				4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */,
 				426680F21A1E4BEE00ACD53D /* Main.storyboard in Resources */,
 				4238D8311A20EEB3006AE0A6 /* PeopleBar.png in Resources */,
