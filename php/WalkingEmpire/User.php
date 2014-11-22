@@ -27,7 +27,7 @@ class User {
 		return $result['facebookid'];
 	}
 	
-	function __construct($cookie) {
+	function __construct($cookie = null) {
 		$this->sql = new SQLUtils();
 		$this->cookie = $cookie;
 	}
