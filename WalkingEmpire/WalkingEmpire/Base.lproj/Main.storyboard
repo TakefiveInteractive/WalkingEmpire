@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" id="SGR-Sb-USP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="AkK-BH-eNg" kind="embed" id="yVn-dv-WHd"/>
@@ -27,7 +27,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="MDN-jb-g4X">
-                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <rect key="frame" x="8" y="498" width="304" height="62"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="e0o-MT-hhX" kind="embed" id="hSi-QA-d36"/>
@@ -46,7 +46,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="AkK-BH-eNg" customClass="MapViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="taW-vG-HY2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -104,28 +104,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwp-rt-ZK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-200" y="-25"/>
+            <point key="canvasLocation" x="-309" y="697"/>
         </scene>
-        <!--View Controller-->
+        <!--Build View Controller-->
         <scene sceneID="8Fv-gb-1Y1">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e0o-MT-hhX" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="e0o-MT-hhX" customClass="BuildViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aWM-jk-4vO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="304" height="62"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="e7g-6I-iEj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="62"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="container" destination="e7g-6I-iEj" id="Vg2-r6-Me4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUk-lx-lbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="674"/>
+            <point key="canvasLocation" x="263" y="677"/>
         </scene>
     </scenes>
     <resources>
