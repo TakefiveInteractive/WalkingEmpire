@@ -43,6 +43,7 @@ If the check failed, the client must re-authenticate using facebook token.
 
 #Update position
 URL: `/update_location`
+Method: POST
 
 Client request
 ```

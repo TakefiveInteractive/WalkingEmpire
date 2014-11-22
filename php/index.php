@@ -20,7 +20,7 @@ $slim->setName("Walking Empire");
 // obtain and set post data (JSON encoded)
 \WalkingEmpire\App::setInput(json_decode(file_get_contents('php://input')));
 
-$slim->get('/update_location', function() {
+$slim->post('/update_location', function() {
 	echo json_encode(new \WalkingEmpire\LocationResponse());	
 });
 
