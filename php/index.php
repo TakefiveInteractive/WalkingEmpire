@@ -24,7 +24,7 @@ class Main {
             return TRUE;
         } else {
             // in our list of potentially dangerous requests
-            return (new \WalkingEmpire\Login\Verifier())->processcookie();
+            return (new \WalkingEmpire\Login\Verifier())->processCookie();
        }
     }
 
@@ -65,10 +65,10 @@ class Main {
             'slim.before.dispatch',     // just before the matching root is called
             function() {
                 $cookieCheckResponse = $this->checkCredentials($this->slim->router()->getCurrentRoute()->getPattern());
-                // if the verifier says no?
-                if (isset($cookieCheckResponse->response) && $cookieCheckResponse->response === FALSE) {
+                // if the verifier says no? (don't use isset cuz isset considers "FALSE" as not set)
+                if (property_exists($cookieCheckResponse, "success") && $cookieCheckResponse->success === FALSE) {
                     // stop the request and return failed info
-                    $this->halt(403, json_encode($cookieCheckResponse));
+                    $this->slim->halt(403, json_encode($cookieCheckResponse));
                 }
             }
         );
@@ -78,18 +78,23 @@ class Main {
         });
 
         $this->slim->post('/add_base', function() {
-            $baseManager = new \WalkingEmpire\BuildingManager();
+            $baseManager = new \WalkingEmpire\BaseManager();
             $baseManager->addBase();
         });
 
         $this->slim->post('/lookup_base', function() {
-
+            $baseManager = new \WalkingEmpire\BaseManager();
+            echo json_encode($baseManager->getBase());
         });
 
         $this->slim->post('/fought_base', function() {
+            $baseManager = new \WalkingEmpire\BaseManager();
+            echo json_encode($baseManager->foughtBase());
         });
 
         $this->slim->post('/build_structure', function() {
+            $baseManager = new \WalkingEmpire\BaseManager();
+            echo json_encode($baseManager->buildStructure());
         });
 
         $this->slim->get('/server_stats', function() {
