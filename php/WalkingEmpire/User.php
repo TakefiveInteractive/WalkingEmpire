@@ -2,6 +2,8 @@
 
 include_once 'database/sqlutils.php';
 
+namespace WalkingEmpire;
+
 class User {
 	private $sql;
 	
@@ -18,6 +20,15 @@ class User {
 		return $result['userid'];
 	}
 	
+    static function findCookieByFacebookId($facebookid) {
+		$sql = new SQLUtils();
+		$result = $sql->select("cookie", "users", "facebookid", $facebookid);
+		if ($result === false)
+			return false;
+		
+		return $result['cookie'];
+	}
+
 	static function findFacebookIdByCookie($cookie) {
 		$sql = new SQLUtils();
 		$result = $sql->select("facebookid", "users", "cookie", $cookie);
