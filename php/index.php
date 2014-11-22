@@ -12,6 +12,10 @@ class Main {
         "/fought_base" => 1
     );
 
+    private $slim;
+
+    private $loader;
+
     /**
      * Function to scan requests for potentially unauthenticated attempts.
      */
@@ -24,39 +28,44 @@ class Main {
             return TRUE;
         }
     }
-    
-    public function main() {
-        
-        $loader = new UniversalClassLoader();
-        $loader->register();
 
-        $loader->registerNamespace('WalkingEmpire', __DIR__);
+    public function __construct() {
+        // init autoloader
+        $this->loader = new UniversalClassLoader();
+        $this->loader->register();
+
+        $this->loader->registerNamespace('WalkingEmpire', __DIR__);
 
         // create router instance
-        $slim = new \Slim\Slim(array(
+        $this->slim = new \Slim\Slim(array(
             'debug' => true,
             'log.level' => \Slim\Log::DEBUG
         ));
 
-        $slim->setName("Walking Empire");
+        $this->slim->setName("Walking Empire");
 
+
+    }
+    
+    public function main() {
+        
         // obtain and set post data (JSON encoded)
         \WalkingEmpire\App::setInput(json_decode(file_get_contents('php://input')));
 
-        $slim->get('/check_cookie', function() use ($slim) {
+        $this->slim->get('/check_cookie', function() {
             echo json_encode((new \WalkingEmpire\Login\Verifier())->processCookie());
         });
 
-        $slim->post('/login', function() use ($slim) {
+        $this->slim->post('/login', function() {
             $loginVerifier = new \WalkingEmpire\Login\Verifier();
             echo json_encode($loginVerifier->processToken());
         });
 
         // Hook to verify that the user is authenticated
-        $slim->hook(
+        $this->slim->hook(
             'slim.before.dispatch',     // just before the matching root is called
-            function() use ($slim) {
-                $cookieCheckResponse = $this->checkCredentials($slim->router()->getCurrentRoute()->getPattern());
+            function() {
+                $cookieCheckResponse = $this->checkCredentials($this->slim->router()->getCurrentRoute()->getPattern());
                 // if the verifier says no?
                 if (isset($cookieCheckResponse->response) && $cookieCheckResponse->response === FALSE) {
                     // stop the request and return failed info
@@ -65,22 +74,23 @@ class Main {
             }
         );
 
-        $slim->post('/update_location', function() use ($slim) {
+        $this->slim->post('/update_location', function() {
             echo json_encode(new \WalkingEmpire\LocationResponse());
         });
 
-       $slim->post('/create_base', function() use ($slim) {
+        $this->slim->post('/create_base', function() {
             $baseManager = new \WalkingEmpire\BuildingManager();
             $baseManager->addBase();
         });
 
-        $slim->post('/fought_base', function() {
+        $this->slim->post('/fought_base', function() {
         });
 
-        $slim->run();
+        $this->slim->run();
     }
 
 }
 
-main();
+$prog = new Main();
+$prog->main();
 
