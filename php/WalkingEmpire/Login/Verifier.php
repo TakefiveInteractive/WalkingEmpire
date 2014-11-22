@@ -5,6 +5,7 @@ namespace WalkingEmpire\Login;
 use Facebook\FacebookSession;
 use WalkingEmpire\User;
 use WalkingEmpire\App;
+use \Slim\Slim;
 
 /**
  * JSON class representing login result
@@ -24,8 +25,6 @@ class Result {
 class Verifier {
 
 	function __construct() {
-        // initialize facebook app
-		FacebookSession::setDefaultApplication('783258861766530', '20433de1149ff2619a5a681f25ea74ea');
 	}
 
 	function validateAccessToken($token) {
@@ -45,18 +44,23 @@ class Verifier {
     const LOGIN_COOKIE_NAME = "userCookie";
 
     function setLoginCookie($cookie_val) {
-        setcookie(self::LOGIN_COOKIE_NAME, $cookie_val);
+        $app = Slim::getInstance();
+
+        $app->setCookie(self::LOGIN_COOKIE_NAME, $cookie_val, '14 days');
     }
 
     function getLoginCookie() {
-        if (isset($_COOKIE[self::LOGIN_COOKIE_NAME])) {
-            return $_COOKIE[self::LOGIN_COOKIE_NAME];
+        $app = Slim::getInstance();
+        $cookie = $app->getCookie(self::LOGIN_COOKIE_NAME);
+
+        if (isset($cookie) {
+            return $cookie;
         } else {
             return FALSE;
         }
     }
 
-    function processCookie() {
+    public function processCookie() {
         $cookie = getLoginCookie();
 
         if ($cookie === FALSE) {
@@ -66,12 +70,30 @@ class Verifier {
             if ($user === FALSE) {
                 return new Result(false, "Invalid cookie");
             } else {
-                return new Result(true, "Logged in");
+                return new Result(true, "");
             }
         }
     }
 
-	function processToken() {
+    private function getUserIdFromFacebook($token) {
+        $session = new FacebookSession($token);
+
+        /* make the API call to get user information */
+        $request = new FacebookRequest(
+          $session,
+            'GET',
+              '/me'
+              );
+        $response = $request->execute();
+        $graphObject = $response->getGraphObject();
+        // handle facebook response object
+        return $graphObject->id;
+    }
+
+	public function processToken() {
+        // initialize facebook app
+		FacebookSession::setDefaultApplication('783258861766530', '20433de1149ff2619a5a681f25ea74ea');
+
         if (isset(App::getInput()->token)) {
             $token = strip_tags(htmlspecialchars(App::getInput()->token));
 
@@ -87,22 +109,10 @@ class Verifier {
                     $user->setCookie($cookie);
                 } else {
                     // new user
-                    $session = new FacebookSession($token);
-
-                    /* make the API call to get user information */
-                    $request = new FacebookRequest(
-                      $session,
-                        'GET',
-                          '/me'
-                          );
-                    $response = $request->execute();
-                    $graphObject = $response->getGraphObject();
-                    // handle facebook response object
-                    $userID = $graphObject->id;
-
+                    $userID = $this->getUserIdFromFacebook($token);
                     $user = User::createUser($userID, $cookie, $token);
                 }
-                // tell client the newest cookie
+                // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
                 return new Result(true, "Logged in");
             } else {
