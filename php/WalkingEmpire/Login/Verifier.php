@@ -3,7 +3,12 @@
 namespace WalkingEmpire\Login;
 
 class Result {
-    
+
+    public $success;
+
+    function __construct($success) {
+        $this->success = $success;
+    }
 }
 
 class Verifier {
@@ -31,10 +36,12 @@ class Verifier {
 
         if (!isset($_POST['token'])) {
             if (validateAccessToken(strip_tags($_POST['token']))) {
+                return json_encode(new Result(true));
             } else {
+                return json_encode(new Result(false));
             }
         } else {
-            return false;
+            return json_encode(new Result(false));
         }
 	}
 
