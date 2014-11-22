@@ -17,6 +17,7 @@
 		4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238D82C1A20EEB3006AE0A6 /* CoinBar.png */; };
 		4238D8301A20EEB3006AE0A6 /* MaterialBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238D82D1A20EEB3006AE0A6 /* MaterialBar.png */; };
 		4238D8311A20EEB3006AE0A6 /* PeopleBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4238D82E1A20EEB3006AE0A6 /* PeopleBar.png */; };
+		4238D8331A20F5F4006AE0A6 /* BuildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238D8321A20F5F4006AE0A6 /* BuildViewController.swift */; };
 		426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426680E91A1E4BEE00ACD53D /* AppDelegate.swift */; };
 		426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 426680EB1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld */; };
 		426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426680EE1A1E4BEE00ACD53D /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		4238D82C1A20EEB3006AE0A6 /* CoinBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoinBar.png; sourceTree = "<group>"; };
 		4238D82D1A20EEB3006AE0A6 /* MaterialBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MaterialBar.png; sourceTree = "<group>"; };
 		4238D82E1A20EEB3006AE0A6 /* PeopleBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PeopleBar.png; sourceTree = "<group>"; };
+		4238D8321A20F5F4006AE0A6 /* BuildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildViewController.swift; sourceTree = "<group>"; };
 		426680E41A1E4BEE00ACD53D /* WalkingEmpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkingEmpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426680E81A1E4BEE00ACD53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		426680E91A1E4BEE00ACD53D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,15 +165,15 @@
 		426680E61A1E4BEE00ACD53D /* WalkingEmpire */ = {
 			isa = PBXGroup;
 			children = (
-				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
-				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
-				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
-				420537771A206EA9000AFB3A /* MapViewController.swift */,
-				8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */,
 				4238D82C1A20EEB3006AE0A6 /* CoinBar.png */,
 				4238D82D1A20EEB3006AE0A6 /* MaterialBar.png */,
 				4238D82E1A20EEB3006AE0A6 /* PeopleBar.png */,
 				4238D82A1A20EC9E006AE0A6 /* circle.png */,
+				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
+				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
+				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
+				420537771A206EA9000AFB3A /* MapViewController.swift */,
+				4238D8321A20F5F4006AE0A6 /* BuildViewController.swift */,
 				4238D8281A20971A006AE0A6 /* ResourcesViewController.swift */,
 				420537791A206F47000AFB3A /* LocationManager.swift */,
 				4238D8261A20933C006AE0A6 /* MoneyResourcePopulation.swift */,
@@ -325,6 +327,7 @@
 				426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */,
 				426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */,
 				4205377A1A206F47000AFB3A /* LocationManager.swift in Sources */,
+				4238D8331A20F5F4006AE0A6 /* BuildViewController.swift in Sources */,
 				4238D8291A20971A006AE0A6 /* ResourcesViewController.swift in Sources */,
 				4238D8271A20933C006AE0A6 /* MoneyResourcePopulation.swift in Sources */,
 				426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */,
