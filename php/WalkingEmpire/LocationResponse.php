@@ -5,16 +5,18 @@ class LocationResponse {
 
 	var $success = true;
 
-	var $buildings_removed = array();
+	var $buildingsRemoved = array();
 
-	var $buildings_changed = array();
+	var $buildingsChanged = array();
 
-	var $buildings_added = array();
+	var $buildingsAdded = array();
+	
+	function getResponse($isSuccess, array $bldgRemoved, array $bldgChanged, array $bldgAdded) {
+		$this->buildingsAdded = $bldgAdded;
+		$this->buildingsChanged = $bldgChanged;
+		$this->buildingsRemoved = $bldgRemoved;
 
-	function __construct(){
-		$this->buildings_added['yyyy-1'] = array(
-			'type' => 'base'
-		);
+		$array = array('');
 	}
 }
-
+?>

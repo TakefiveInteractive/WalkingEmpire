@@ -21,6 +21,11 @@ $slim->get('/update_location', function() {
 	echo json_encode(new \WalkingEmpire\LocationResponse());	
 });
 
+$slim->post('/login', function() {
+	$loginVerifier = \WalkingEmpire\Login\Verifier();
+	$loginverifier->process();
+});
+
 $slim->run();
 
 
