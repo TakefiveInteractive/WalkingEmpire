@@ -22,8 +22,8 @@ $slim->get('/update_location', function() {
 });
 
 $slim->post('/login', function() {
-	$loginVerifier = \WalkingEmpire\Login\Verifier();
-	$loginverifier->process();
+	$loginVerifier = new \WalkingEmpire\Login\Verifier();
+	echo json_encode($loginVerifier->process());
 });
 
 $slim->run();

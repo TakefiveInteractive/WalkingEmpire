@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "2.*",
-	"symfony/class-loader": "2.*"
+	"symfony/class-loader": "2.*",
+	"facebook/php-sdk-v4" : "4.0.*"
     }
 }
