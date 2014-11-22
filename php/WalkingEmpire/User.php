@@ -70,16 +70,20 @@ class User {
 			return true;
 	}
 	
-	function getCookies() {
-		
+	function getCookie() {
+		return $cookie;
 	}
 	
 	function getToken() {
+		$result = $this->sql->select("token", "users", "cookie", $this->cookie);
+		if ($result === false)
+			return false;
 		
+		return $result['token'];
 	}
 	
 	function getRow() {
-		
+		$result = $this->sql->select("*", "users", "cookie", $this->cookie);
 	}
 }
 
