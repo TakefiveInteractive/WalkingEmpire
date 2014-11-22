@@ -109,6 +109,8 @@ URL: `/lookup_base`
 
 Method: POST
 
+Each base consists of 160 squares, layed out in 10 rows and 16 columns. They are to be shown in landscape mode in the mobile app.
+
 Client request
 ```
 {
@@ -125,7 +127,7 @@ Server response
             "id": "12341324231",
             "hp": 100,
             "type": "arrow_tower"
-            "tileX": 3,     // 16x16 block of space
+            "tileX": 3,     // 10 x 16 block of space
             "tileY": 5
         },
         {
