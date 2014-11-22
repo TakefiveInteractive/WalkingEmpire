@@ -6,11 +6,25 @@ class User {
 	private $sql;
 	
 	private $userid;
+	private $facebookUserId;
 	private $cookie;
+	
+	static function createuser($facebookUserId, $cookie, $token) {
+		$sql = new SQLUtils();
+		$columnStr = "`facebookid`, `cookie`, `token`";
+		$valueStr = sprintf("%s, %s, %s", $facebookUserId, $cookie, $token);
+		$result = $sql->insert("users", $columnStr, $valueStr);
+		$sql->destroy();
+		if ($result === false)
+			return false;
+		
+		return true;
+	}
 	
 	static function findUserIdByCookie($cookie) {
 		$sql = new SQLUtils();
 		$result = $sql->select("userid", "users", "cookie", $cookie);
+		$sql->destroy();
 		if ($result === false)
 			return false;
 		
@@ -21,6 +35,7 @@ class User {
 	static function findFacebookIdByCookie($cookie) {
 		$sql = new SQLUtils();
 		$result = $sql->select("facebookid", "users", "cookie", $cookie);
+		$sql->destroy();
 		if ($result === false)
 			return false;
 		
@@ -80,6 +95,15 @@ class User {
 			return false;
 		
 		return $result['token'];
+	}
+	
+	function getLocation() {
+		$result = $this->sql->select("longitude, latitude", "users", "cookie", $this->cookie);
+		if ($result === false)
+			return false;
+		
+		else
+			return $result;
 	}
 	
 	function getRow() {
