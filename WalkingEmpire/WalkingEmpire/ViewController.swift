@@ -26,8 +26,6 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker.title = "sdfds"
         marker.snippet = "sdfdssddssdf"
         marker.map = map
-
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }

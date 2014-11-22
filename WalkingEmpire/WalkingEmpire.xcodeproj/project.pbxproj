@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4205376C1A20668E000AFB3A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4205376B1A20668E000AFB3A /* FacebookSDK.framework */; };
 		420537721A20679E000AFB3A /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420537711A20679E000AFB3A /* FBAudienceNetwork.framework */; };
+		420537781A206EAA000AFB3A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420537771A206EA9000AFB3A /* MapViewController.swift */; };
+		4205377A1A206F47000AFB3A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420537791A206F47000AFB3A /* LocationManager.swift */; };
 		426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426680E91A1E4BEE00ACD53D /* AppDelegate.swift */; };
 		426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 426680EB1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld */; };
 		426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426680EE1A1E4BEE00ACD53D /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		4205376B1A20668E000AFB3A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		420537711A20679E000AFB3A /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		420537751A206912000AFB3A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../Meeet Up/Bolts.framework"; sourceTree = "<group>"; };
+		420537771A206EA9000AFB3A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		420537791A206F47000AFB3A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		426680E41A1E4BEE00ACD53D /* WalkingEmpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkingEmpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426680E81A1E4BEE00ACD53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		426680E91A1E4BEE00ACD53D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,8 +61,8 @@
 		426680FC1A1E4BEF00ACD53D /* WalkingEmpireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalkingEmpireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		426681011A1E4BEF00ACD53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		426681021A1E4BEF00ACD53D /* WalkingEmpireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingEmpireTests.swift; sourceTree = "<group>"; };
-		42893B011A1E805600155C15 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		42893B031A1E80BF00155C15 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		42893B011A1E805600155C15 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = WalkingEmpire/GoogleMaps.framework; sourceTree = "<group>"; };
+		42893B031A1E80BF00155C15 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = WalkingEmpire/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		42893B051A1E815000155C15 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		42893B061A1E815000155C15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		42893B071A1E815000155C15 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -110,6 +114,8 @@
 		426680DB1A1E4BEE00ACD53D = {
 			isa = PBXGroup;
 			children = (
+				42893B031A1E80BF00155C15 /* GoogleMaps.bundle */,
+				42893B011A1E805600155C15 /* GoogleMaps.framework */,
 				420537751A206912000AFB3A /* Bolts.framework */,
 				420537711A20679E000AFB3A /* FBAudienceNetwork.framework */,
 				4205376B1A20668E000AFB3A /* FacebookSDK.framework */,
@@ -143,11 +149,11 @@
 		426680E61A1E4BEE00ACD53D /* WalkingEmpire */ = {
 			isa = PBXGroup;
 			children = (
-				42893B031A1E80BF00155C15 /* GoogleMaps.bundle */,
-				42893B011A1E805600155C15 /* GoogleMaps.framework */,
 				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
 				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
 				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
+				420537771A206EA9000AFB3A /* MapViewController.swift */,
+				420537791A206F47000AFB3A /* LocationManager.swift */,
 				426680F31A1E4BEE00ACD53D /* Images.xcassets */,
 				426680F51A1E4BEE00ACD53D /* LaunchScreen.xib */,
 				426680EB1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld */,
@@ -232,6 +238,11 @@
 					426680E31A1E4BEE00ACD53D = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = Z52YC535HH;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					426680FB1A1E4BEF00ACD53D = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -287,7 +298,9 @@
 			files = (
 				426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */,
 				426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */,
+				4205377A1A206F47000AFB3A /* LocationManager.swift in Sources */,
 				426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */,
+				420537781A206EAA000AFB3A /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
