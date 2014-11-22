@@ -53,7 +53,7 @@ class Verifier {
         $app = Slim::getInstance();
         $cookie = $app->getCookie(self::LOGIN_COOKIE_NAME);
 
-        if (isset($cookie) {
+        if (isset($cookie)) {
             return $cookie;
         } else {
             return FALSE;
@@ -61,7 +61,7 @@ class Verifier {
     }
 
     public function processCookie() {
-        $cookie = getLoginCookie();
+        $cookie = $this->getLoginCookie();
 
         if ($cookie === FALSE) {
             return new Result(false, "Cookie not found");
