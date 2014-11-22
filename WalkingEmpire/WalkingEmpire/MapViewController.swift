@@ -2,51 +2,72 @@
 //  MapViewController.swift
 //  WalkingEmpire
 //
-//  Created by Kedan Li on 14/11/20.
+//  Created by Kedan Li on 14/11/22.
 //  Copyright (c) 2014年 Kedan Li. All rights reserved.
 //
 
 import UIKit
 
-import MapKit
+class MapViewController: UIViewController, GMSMapViewDelegate{
 
-class MapViewController: UIViewController {
+    var map: GMSMapView!
 
-    @IBOutlet var map: MKMapView!
-
-    let latitude = 42.0534
-    let longitude = -87.672
+    var general: GMSMarker!
+    
+    var setUpped: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        initializeGameMap()
+        var camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.23, zoom:18)
+        
+        map = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+        map.myLocationEnabled = false
+        self.view = map
+
 
         // Do any additional setup after loading the view.
     }
 
-    func initializeGameMap(){
-        let span = MKCoordinateSpanMake(0.0005, 0.0005)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(latitude, longitude), span: span)
-        map.setRegion(region, animated: true)
+    func setUpMap(){
         
-        //3
-        let annotation = MKPointAnnotation()
-        annotation.setCoordinate(CLLocationCoordinate2DMake(latitude, longitude))
-        annotation.title = "Big Ben"
-        annotation.subtitle = "London"
-        map.addAnnotation(annotation)
+        resetPosition()
         
-        addOverlay()
+        general = GMSMarker(position: LocationInfo.getCurrentLocation().coordinate)
+        general.title = "self"
+        general.snippet = "general"
+        general.appearAnimation = kGMSMarkerAnimationPop
+        general.map = map
+        general.icon = UIImage(named: "circle")
+        general.groundAnchor = CGPointMake(0.5, 0.5)
+        
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        
+    }
+    
+    func resetPosition(){
+        map.camera = GMSCameraPosition.cameraWithLatitude(LocationInfo.getCurrentLocation().coordinate.latitude, longitude: LocationInfo.getCurrentLocation().coordinate.longitude, zoom: 18)
+    }
+    
+    func updateLocation(){
+        
+        if !setUpped{
+            setUpMap()
+            setUpped = true
+        }
+        
+        general.position = LocationInfo.getCurrentLocation().coordinate
 
     }
-
-    func addOverlay(){
-        var overlay: MKOverlayView = MKOverlayView(frame: CGRectMake(0, 0, 100, 100))
-        overlay.backgroundColor = UIColor.redColor()
-        map.addOverlay(overlay, level: MKOverlayLevel.AboveLabels)
+    
+    
+    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+        
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
