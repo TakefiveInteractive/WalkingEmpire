@@ -2,8 +2,6 @@
 
 include_once 'database/sqlutils.php';
 
-namespace WalkingEmpire;
-
 class User {
 	private $sql;
 	
@@ -14,7 +12,7 @@ class User {
 	static function createuser($facebookUserId, $cookie, $token) {
 		$sql = new SQLUtils();
 		$columnStr = "`facebookid`, `cookie`, `token`";
-		$valueStr = sprintf("%s, %s, %s", $facebookUserId, $cookie, $token);
+		$valueStr = sprintf("'%s', '%s', '%s'", $facebookUserId, $cookie, $token);
 		$result = $sql->insert("users", $columnStr, $valueStr);
 		$sql->destroy();
 		if ($result === false)

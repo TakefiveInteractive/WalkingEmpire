@@ -49,7 +49,7 @@ class Base {
 		$this->baseId = $baseId;
 	
 		$columnStr = "`baseid`, `longitude`, `latitude`, `owner`";
-		$valueStr = sprintf("%s, %s, %s, %s", $baseId, $this->longitude, $this->latitude, $this->owner);
+		$valueStr = sprintf("'%s', '%s', '%s', '%s'", $baseId, $this->longitude, $this->latitude, $this->owner);
 		$result = $this->sql->insert("structures", $columnStr, $valueStr);
 		if ($result === false)
 			return false;
@@ -62,7 +62,7 @@ class Base {
 	}
 	
 	function changeOwner($owner) {
-		$equivalenceStr = sprintf("`owner` = %s", $owner);
+		$equivalenceStr = sprintf("`owner` = '%s'", $owner);
 		$result = $this->sql->update("bases", $equivalenceStr, "baseid", $this->baseId);
 		if ($result === false)
 			return false;
