@@ -43,8 +43,6 @@
 		42893B1A1A1E815000155C15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0E1A1E815000155C15 /* OpenGLES.framework */; };
 		42893B1B1A1E815000155C15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0F1A1E815000155C15 /* QuartzCore.framework */; };
 		42893B1C1A1E815000155C15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B101A1E815000155C15 /* SystemConfiguration.framework */; };
-<<<<<<< HEAD
-=======
 		42953B6A1A2150E000CB01B6 /* UserInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42953B691A2150E000CB01B6 /* UserInformation.plist */; };
 		42953B6F1A21529600CB01B6 /* InteractingWithServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953B6E1A21529600CB01B6 /* InteractingWithServer.swift */; };
 		42953B721A215A0400CB01B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 42953B711A215A0400CB01B6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -74,7 +72,6 @@
 		42953BC31A222F2500CB01B6 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC21A222F2500CB01B6 /* login.png */; };
 		42953BC51A22379D00CB01B6 /* BaseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */; };
 		42953BC71A223D6500CB01B6 /* ConstructionsPanelSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */; };
->>>>>>> IOS-Kedan
 		8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */; };
 /* End PBXBuildFile section */
 
@@ -131,8 +128,6 @@
 		42893B0F1A1E815000155C15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42893B101A1E815000155C15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		42893B1D1A1E839100155C15 /* WalkingEmpire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalkingEmpire-Bridging-Header.h"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		42953B691A2150E000CB01B6 /* UserInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserInformation.plist; sourceTree = "<group>"; };
 		42953B6E1A21529600CB01B6 /* InteractingWithServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractingWithServer.swift; sourceTree = "<group>"; };
 		42953B701A215A0400CB01B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -163,7 +158,6 @@
 		42953BC21A222F2500CB01B6 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoViewController.swift; sourceTree = "<group>"; };
 		42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanelSquare.png; sourceTree = "<group>"; };
->>>>>>> IOS-Kedan
 		8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlPanel.png; path = UI/ControlPanel.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -421,10 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				42953BBF1A22235400CB01B6 /* BackwardButton.png in Resources */,
->>>>>>> IOS-Kedan
 				8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */,
 				4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */,
 				42953BB61A21D09500CB01B6 /* OtherUserIcon.png in Resources */,

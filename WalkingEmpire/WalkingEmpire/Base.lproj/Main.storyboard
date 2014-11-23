@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="CarterOne.ttf">
@@ -25,11 +25,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="TKC-bC-fYs">
-<<<<<<< HEAD
-                                <rect key="frame" x="0.0" y="20" width="153" height="103"/>
-=======
                                 <rect key="frame" x="16" y="20" width="153" height="103"/>
->>>>>>> IOS-Kedan
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Qfg-lC-zBY" kind="embed" id="WQ2-UK-FS9"/>
@@ -115,13 +111,6 @@
         <!--Add Base View Controller-->
         <scene sceneID="sMA-YG-dQ9">
             <objects>
-<<<<<<< HEAD
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qfg-lC-zBY" customClass="ResourcesViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WNL-ba-h9p">
-                        <rect key="frame" x="0.0" y="0.0" width="153" height="103"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-=======
                 <viewController storyboardIdentifier="confirmBase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zit-6D-l8Q" customClass="AddBaseViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cz8-9P-OxO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -181,7 +170,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="153" height="103"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
->>>>>>> IOS-Kedan
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0jI-nU-7Ry">
                                 <rect key="frame" x="3" y="2" width="123" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -203,13 +191,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-<<<<<<< HEAD
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ST-M8-tsp">
-                                <rect key="frame" x="45" y="69" width="50" height="16"/>
-=======
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9ST-M8-tsp">
                                 <rect key="frame" x="45" y="67" width="50" height="20"/>
->>>>>>> IOS-Kedan
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -234,14 +217,11 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="money" destination="ctG-Dc-eFp" id="6Wk-Ty-C6G"/>
-<<<<<<< HEAD
-=======
                         <outlet property="moneyPicture" destination="0jI-nU-7Ry" id="Vbz-9V-jWN"/>
                         <outlet property="population" destination="9ST-M8-tsp" id="oQM-P9-h8G"/>
                         <outlet property="populationPicture" destination="hfx-VA-5Hv" id="Klh-MV-FaJ"/>
                         <outlet property="resource" destination="pK2-A7-cz9" id="erU-at-iuC"/>
                         <outlet property="resourcePicture" destination="N2H-mr-chf" id="zjf-KG-RWq"/>
->>>>>>> IOS-Kedan
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uwp-rt-ZK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,10 +306,6 @@
         <image name="BuyButton.png" width="134" height="48"/>
         <image name="CancelButton.png" width="87" height="85"/>
         <image name="CoinBar.png" width="238" height="67"/>
-<<<<<<< HEAD
-        <image name="MaterialBar.png" width="238" height="65"/>
-        <image name="PeopleBar.png" width="198" height="68"/>
-=======
         <image name="ConfirmPanel.png" width="365" height="192"/>
         <image name="ConstructButton.png" width="128" height="128"/>
         <image name="ConstructButtonSelected.png" width="150" height="150"/>
@@ -339,7 +315,6 @@
         <image name="PeopleBar.png" width="198" height="68"/>
         <image name="ViewTowerBrown200x200.png" width="200" height="200"/>
         <image name="login.png" width="395" height="184"/>
->>>>>>> IOS-Kedan
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
