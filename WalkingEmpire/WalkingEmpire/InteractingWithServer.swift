@@ -46,6 +46,8 @@ class InteractingWithServer: NSObject {
         
         if (error == nil){
             
+            println(response)
+            
             if let httpResponse = response as? NSHTTPURLResponse {
                 
                 //var returnData = httpResponse.textEncodingName!.dataUsingEncoding(NSUTF8StringEncoding)

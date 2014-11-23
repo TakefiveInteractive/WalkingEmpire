@@ -24,7 +24,7 @@ class ObjectsOnMap: NSObject {
 
 class General: ObjectsOnMap{
     
-    var icon: UIImage = UIImage(named: "UserIconDarkGray80x80MK2")!
+    var icon: UIImage = UIImage(named: "UserIconBlack80x80Quantz")!
     
     override init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
         
@@ -35,15 +35,24 @@ class General: ObjectsOnMap{
 }
 
 class Building: ObjectsOnMap{
-    /*
-    var icon: UIImage = UIImage(named: "UserIconDarkGray80x80MK2")!
     
-    override init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, blo) {
+    var icon: UIImage = UIImage()
+    
+    var identifier: String!
+    
+    init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, identifier: String) {
         
         super.init(user: user, longitude: longitude, latitude: latitude)
         
+        self.identifier = identifier
+        
+        if user == UserInfo.userid{
+            icon = UIImage(named: "ViewTowerBrown50x50MK4")!
+        }else{
+            icon = UIImage(named: "ViewTowerDarkGray50x50MK4")!
+        }
     }
-    */
+    
 }
 
 

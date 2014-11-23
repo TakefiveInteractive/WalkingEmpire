@@ -25,7 +25,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
         controller = control
         self.location.delegate = self
         self.location.desiredAccuracy = kCLLocationAccuracyBest
-
+        self.location.requestAlwaysAuthorization()
         
     }
     
@@ -53,7 +53,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
 
             if distance > 1{
                 MoneyResoursePopulationManager.addValue(distance)
-                (controller.childViewControllers[2] as ResourcesViewController).updateResources()
+                (controller.childViewControllers[1] as ResourcesViewController).updateResources()
                 removeAlldistance()
             }
         }

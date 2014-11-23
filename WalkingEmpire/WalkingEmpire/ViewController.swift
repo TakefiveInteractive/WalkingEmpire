@@ -13,8 +13,19 @@ class ViewController: UIViewController {
 
     var loginView : UIViewController!
     
+    @IBOutlet var buildButton: UIButton!
+    @IBOutlet var relocateButton: UIButton!
+    @IBOutlet var menuButton: UIButton!
+
+    var generals: [String: General] = [String: General]()
+    var buildings: [String: Building] = [String: Building]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        buildButton.addTarget(self, action: "build", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: "menu", forControlEvents: UIControlEvents.TouchUpInside)
+        relocateButton.addTarget(self, action: "relocate", forControlEvents: UIControlEvents.TouchUpInside)
 
         if UserInfo.isLogined(){
             LocationInfo.start()
@@ -23,6 +34,23 @@ class ViewController: UIViewController {
             displayLoginController(loginView)
         }
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func build(){
+        if buildButton.selected{
+            buildButton.selected = false
+            (self.childViewControllers[0] as MapViewController).resetPosition()
+        }else{
+            buildButton.selected = true
+        }
+    }
+    
+    func menu(){
+        
+    }
+    
+    func relocate(){
+        (self.childViewControllers[0] as MapViewController).resetPosition()
     }
     
     func displayLoginController(content: UIViewController){
