@@ -1,5 +1,7 @@
 Assuming at this stage the entire map is limited to a 1km x 1km rectangle, centered around Wildhacks auditorium.
 
+##Makeshift Server IP: 104.236.3.152
+
 ##Login using Facebook UserID and Access Token
 URL: `/login`
 
