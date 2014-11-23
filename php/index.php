@@ -13,7 +13,8 @@ class Main {
     private $openPaths = array(
         "/login" => 1,
         "/check_cookie" => 1,
-        "/server_stats" => 1
+        "/server_stats" => 1,
+        "/sandbox" => 1
     );
 
     private $slim;
@@ -73,7 +74,7 @@ class Main {
             function() {
                 // obtain and set post data (JSON encoded)
                 $postData = file_get_contents('php://input');
-                $GLOBALS['pppp'] = $postData;
+                error_log("BDB" . $postData . "CXC\n", 3, "/home/www-data/error.log");
                 $decodedPostData = json_decode($postData);
  
                 // check if input is valid
@@ -118,7 +119,6 @@ class Main {
         });
 
         $this->slim->post('/add_base', function() {
-            echo $GLOBALS['pppp'];
             $baseManager = new \WalkingEmpire\BaseManager();
             echo json_encode($baseManager->addBase());
         });
@@ -146,6 +146,10 @@ class Main {
         $this->slim->post('/build_structure', function() {
             $baseManager = new \WalkingEmpire\BaseManager();
             echo json_encode($baseManager->buildStructure());
+        });
+
+        $this->slim->get('/sandbox', function() {
+            include "WalkingEmpire/sandbox.php";
         });
 
         $this->slim->get('/server_stats', function() {
