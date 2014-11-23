@@ -1,6 +1,10 @@
 <?php
 
-include_once '../database/sqlutils.php';
+namespace WalkingEmpire;
+
+use WalkingEmpire\database\SQLUtils;
+use WalkingEmpire\Building\Structure;
+
 
 class Base {
 	private $baseId;
@@ -33,7 +37,23 @@ class Base {
 	
 		return $obj;
 	}
-	
+
+    public static function getAllBases() {
+		$sql = new SQLUtils();
+		$queryStr = "SELECT * FROM `bases`";
+		$result = $sql->customQuery($queryStr);
+		if ($result === false)
+			return false;
+		
+		$array = array();
+		foreach ($result as $x) {
+			$obj = new Base($x['baseid'], $x['longitude'], $x['latitude'], $x['owner']);
+			$array[] = $obj;
+		}
+		
+		return $array;
+	}
+
 	function __construct($baseId, $longitude, $latitude, $creator) {
 		$this->baseId = $baseId;
 		$this->longitude = $longitude;
@@ -68,7 +88,13 @@ class Base {
 		foreach ($result as $tempRow)
 			$array[] = $tempRow['structure'];
 		
-		return $array;
+		$structureArr = array();
+		foreach ($array as $structureId) {
+			$structure = Structure::getStructure($structureId);
+			$structureArr[] = $structure;
+		}
+		
+		return $structureArr;
 	}
 	
 	function changeOwner($owner) {

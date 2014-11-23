@@ -61,6 +61,7 @@ Client request
 	"last_updated": 341294028		// epoch time in seconds
 }
 ```
+The client may sent 0 for last_updated during the first API call. Subsequent calls should specify the last_updated value provided by the server.
 
 Server response: Case I
 ```
@@ -80,7 +81,19 @@ Server response: Case I
 			"latitude": 2,
 			"longitude": 3.14159
 		}
-	}
+	},
+    "users": {      // shows other users
+        // indexed by their facebook userIDs
+        "4893210483": {
+            "latitude": 0.4234,
+            "longitude": 23
+        },
+        "4243242134": {
+            "latitude": 43,
+            "longitude": 11
+        }
+    },
+    "last_updated": 4891243240
 }
 ```
 Server response: Case II
@@ -98,7 +111,19 @@ Server response: Case II
 			"latitude": 2,
 			"longitude": 3.14159
 		}
-	}
+	},
+    "users": {      // shows other users
+        // indexed by their facebook userIDs
+        "4893210483": {
+            "latitude": 0.4234,
+            "longitude": 23
+        },
+        "4243242134": {
+            "latitude": 43,
+            "longitude": 11
+        }
+    }
+    "last_updated": 4213094897
 }
 ```
 The client is responsible for checking cases (e.g. by detecting whether `buildings` key is in the dictionary). In case one, the client should apply the changes to its local buildings data structure. In case two, the client have to rebuild the entire buildings data structure from the `bases` list. Case two will only happen if the client have not pulled changes from the server for a very long time (like five days). The list of changes is prohibitively expensive to maintain in the long run, so it is capped to five days max.
@@ -112,7 +137,7 @@ Client request
 ```
 {
     "latitude": 0,
-    "longtitude": 0
+    "longitude": 0
 }
 ```
 
@@ -161,7 +186,9 @@ Server response
 }
 ```
 
-##Submit results after attacking a base
+##Submit results after attacking a base and failing
+The client will maintain no. of soldiers as of now. This is called when all soldiers are expended but the base is still standing.
+
 URL: `/fought_base`
 
 Method: POST
@@ -173,6 +200,44 @@ Client request
     "structures": [
         // as aforementioned
     ]
+}
+```
+
+Server response
+```
+{
+    "success": true
+}
+```
+
+##Taking over a base
+URL: `/takeover_base`
+
+Method: POST
+
+Client request
+```
+{
+    "baseID": "414301280"
+}
+```
+
+Server response
+```
+{
+    "success": true
+}
+```
+
+##Destroying a base
+URL: `/destroy_base`
+
+Method: POST
+
+Client request
+```
+{
+    "baseID": "48320948"
 }
 ```
 

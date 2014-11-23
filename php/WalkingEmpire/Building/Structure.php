@@ -1,5 +1,8 @@
 <?php
 
+namespace WalkingEmpire\Building;
+
+
 include_once 'Resource.php';
 include_once 'War.php';
 
@@ -91,7 +94,7 @@ abstract class Structure {
 	}
 	
 	function destroy() {
-		$result = $this->sql->delete("structures", "structureId", $this->structureId);
+		$result = $this->sql->delete("structures", "structureid", $this->structureId);
 		if ($result === false)
 			return false;
 		
@@ -115,7 +118,7 @@ abstract class Structure {
 						'column' => $this->column,
 						'creator' => $this->creator);
 		
-		return $array();
+		return $array;
 	}
 }
 

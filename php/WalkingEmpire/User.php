@@ -52,6 +52,22 @@ class User {
 		return $result['facebookid'];
 	}
 	
+	public static function getAllUsers() {
+		$sql = new SQLUtils();
+		$queryStr = "SELECT * FROM `users`";
+		$result = $sql->customQuery($queryStr);
+		if ($result === false)
+			return false;
+		
+		$array = array();
+		foreach ($result as $tempArr) {
+			$obj = new User($tempArr['cookie']);
+			$array[] = $obj;
+		}
+		
+		return $array;
+	}
+	
 	function __construct($cookie = null) {
 		$this->sql = new SQLUtils();
 		$this->cookie = $cookie;
@@ -69,16 +85,16 @@ class User {
 	function setLocation($longitude, $latitude) {
 		$eqivalenceStr = sprintf("`longitude` = %f, `latitude` = %f", $longitude, $latitude);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else
 			return true;
 	}
 	
 	function setCookie($cookie) {
-		$eqivalenceStr = sprintf("`cookie` = '%s'", $cookie);
+		$equivalenceStr = sprintf("`cookie` = '%s'", $cookie);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else {
 			$this->cookie = $cookie;
@@ -89,7 +105,7 @@ class User {
 	function setToken($token) {
 		$eqivalenceStr = sprintf("`token` = '%s'", $token);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else
 			return true;
@@ -110,14 +126,17 @@ class User {
 	function getLocation() {
 		$result = $this->sql->select("longitude, latitude", "users", "cookie", $this->cookie);
 		if ($result === false)
-			return false;
-		
+			return false;	
 		else
 			return $result;
 	}
 	
 	function getRow() {
 		$result = $this->sql->select("*", "users", "cookie", $this->cookie);
+		if ($result === false)
+			return false;	
+		else
+			return $result;
 	}
 }
 
