@@ -66,7 +66,7 @@ class Main {
             function() {
                 $cookieCheckResponse = $this->checkCredentials($this->slim->router()->getCurrentRoute()->getPattern());
                 // if the verifier says no? (don't use isset cuz isset considers "FALSE" as not set)
-                if (property_exists($cookieCheckResponse, "success") && $cookieCheckResponse->success === FALSE) {
+                if (is_object($cookieCheckResponse) && property_exists($cookieCheckResponse, "success") && $cookieCheckResponse->success === FALSE) {
                     // stop the request and return failed info
                     $this->slim->halt(403, json_encode($cookieCheckResponse));
                 }
@@ -74,7 +74,7 @@ class Main {
         );
 
         $this->slim->post('/update_location', function() {
-            echo json_encode(new \WalkingEmpire\LocationResponse());
+            echo json_encode((new \WalkingEmpire\BaseManager())->queryAllBases());
         });
 
         $this->slim->post('/add_base', function() {
