@@ -20,7 +20,7 @@ class Base {
 	static function newBase($longitude, $latitude, $owner) {
 		$obj = new Base(null, $longitude, $latitude, $owner);
 	
-		$result = $this->create();
+		$result = $obj->create();
 		if ($result === false)
 			return false;
 	
@@ -145,7 +145,7 @@ class Base {
 		$result = $this->sql->customQuery($customQueryInput);
 		if ($result === false)
 			return false;
-		$baseId = $row['baseid'] + 1;
+		$baseId = $result['baseid'] + 1;
 		return $baseId;
 	}
 }
