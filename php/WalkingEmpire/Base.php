@@ -79,6 +79,22 @@ class Base {
 		return true;
 	}
 	
+	function addStructure($type, $row, $column) {
+		$result = Structure::newStructure($type, $this->baseId, $row, $column, $this->owner);
+		if ($result === false)
+			return false;
+		
+		return true;
+	}
+	
+	function deleteStructure($structureId) {
+		$result = $this->sql->delete("structures", "structureid", $structureId);
+		if ($result === false)
+			return false;
+		
+		return true;
+	}
+	
 	function getStructure() {
 		$result = $this->sql->select("*", "structures", "base", $this->baseId);
 		if ($result === false)

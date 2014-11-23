@@ -26,8 +26,8 @@ abstract class Structure {
 	
 	private $sql;
 	
-	static function newStructure($type, $baseId, $row, $column, $createTime, $creator) {
-		$obj = new Structure(null, $type, $baseId, $row, $column, 100, $createTime, $creator);
+	static function newStructure($type, $baseId, $row, $column, $creator) {
+		$obj = new Structure(null, $type, $baseId, $row, $column, 100, time(), $creator);
 		
 		$result = $this->create();
 		if ($result === false)
