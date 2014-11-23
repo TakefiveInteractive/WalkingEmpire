@@ -24,8 +24,8 @@ class Result {
         $success2 = $obj2->success;
 
         // remove success from sub results
-        $arr1 = (array) $obj1;
-        $arr2 = (array) $obj2;
+        $arr1 = (array) $obj1->$obj1_name;
+        $arr2 = (array) $obj2->$obj2_name;
         unset($arr1['success']);
         unset($arr2['success']);
         unset($arr1['comment']);

@@ -12,6 +12,15 @@ class LocationInfo {
     }
 }
 
+class OtherUserLocationsResponse extends \WalkingEmpire\Login\Result {
+    public $users;
+
+    public function __construct($success, $users) {
+        parent::__construct($success);
+        $this->users = $users;
+    }
+}
+
 class UserManager {
 
     private $input;
@@ -25,11 +34,13 @@ class UserManager {
             return new Result(false, "No location information.");
         // create User instance
         $user = new User(App::getCookie());
-        $user->setLocation($this->longitude, $this->latitude);
+        $user->setLocation($this->input->longitude, $this->input->latitude);
     }
 
     public function getOtherUserLocations() {
         $allUsers = User::getAllUsers();
+        if ($allUsers === FALSE)
+            return new \WalkingEmpire\Login\Result(false, "Unable to get users.");
         $thisId = App::getUserID();
 
         $returnArr = array();
@@ -41,6 +52,8 @@ class UserManager {
             $location = $allUsers[$i]->getLocation();
             $returnArr[$allUsers[$i]->getToken()] = new LocationInfo($location['latitude'], $location['longitude']);
         }
-        return $returnArr;
+        
+        $returnClass = new OtherUserLocationsResponse(true, $returnArr);
+        return $returnClass;
     }
 }

@@ -54,18 +54,6 @@ class Main {
     
     public function main() {
         
-        // obtain and set post data (JSON encoded)
-        $postData = file_get_contents('php://input');
-        $decodedPostData = json_decode($postData);
-
-        // check if input is valid
-        if (strlen($postData) != 0 && ($decodedPostData === FALSE || $decodedPostData === NULL || !is_object($decodedPostData))) {
-            // halt application in case of failed JSON decode and non-empty input
-            // in addition, input data must decode to an object (enforced by API protocol).
-            $this->slim->halt(403, json_encode(new \WalkingEmpire\Login\Result(false, "Malformed JSON request.")));
-        }
-
-        \WalkingEmpire\App::setInput($decodedPostData);
 
         // since almost 100% responses are JSON, we set the Content-Type here.
         header('Content-Type: application/json');
@@ -78,6 +66,28 @@ class Main {
             $loginVerifier = new \WalkingEmpire\Login\Verifier();
             echo json_encode($loginVerifier->processToken());
         });
+
+        // Hook to verify that the input is well-formed. This must be done using hooks as early as possible 
+        // because halt can only be called in Slim callbacks, never in outer scope.
+        $this->slim->hook(
+            'slim.before',
+            function() {
+                // obtain and set post data (JSON encoded)
+                $postData = file_get_contents('php://input');
+                $decodedPostData = json_decode($postData);
+ 
+                // check if input is valid
+                if (strlen($postData) != 0
+                    && ($decodedPostData === FALSE || $decodedPostData === NULL || !is_object($decodedPostData))) {
+                    // halt application in case of failed JSON decode and non-empty input
+                    // in addition, input data must decode to an object (enforced by API protocol).
+                    $this->slim->halt(403, json_encode(new \WalkingEmpire\Login\Result(false, "Malformed JSON request.")));
+                } else {
+                    // load data
+                    \WalkingEmpire\App::setInput($decodedPostData);
+                }
+            }
+        );
 
         // Hook to verify that the user is authenticated
         $this->slim->hook(
@@ -103,8 +113,8 @@ class Main {
             // fetch information about nearby bases
             $result2 = (new \WalkingEmpire\BaseManager())->queryAllBases();
             // final data structure is the combination of the two
-            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2, "bases", "users");
-            return json_encode($finalResult);
+            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2, "users", "bases");
+            echo json_encode($finalResult);
         });
 
         $this->slim->post('/add_base', function() {
