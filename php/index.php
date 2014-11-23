@@ -53,7 +53,17 @@ class Main {
     public function main() {
         
         // obtain and set post data (JSON encoded)
-        \WalkingEmpire\App::setInput(json_decode(file_get_contents('php://input')));
+        $postData = file_get_contents('php://input');
+        $decodedPostData = json_decode($postData);
+
+        // check if input is valid
+        if (strlen($postData) != 0 && ($decodedPostData === FALSE || $decodedPostData === NULL || !is_object($decodedPostData))) {
+            // halt application in case of failed JSON decode and non-empty input
+            // in addition, input data must decode to an object (enforced by API protocol).
+            $this->slim->halt(403, json_encode(new \WalkingEmpire\Login\Result(false, "Malformed JSON request.")));
+        }
+
+        \WalkingEmpire\App::setInput($decodedPostData);
 
         // since almost 100% responses are JSON, we set the Content-Type here.
         header('Content-Type: application/json');

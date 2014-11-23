@@ -7,20 +7,6 @@ use WalkingEmpire\User;
 use WalkingEmpire\App;
 use \Slim\Slim;
 
-/**
- * JSON class representing login result
- */
-class Result {
-
-    public $success;
-
-    public $comment;
-
-    function __construct($success, $comment = "None") {
-        $this->success = $success;
-        $this->comment = $comment;
-    }
-}
 
 class Verifier {
 
@@ -60,21 +46,6 @@ class Verifier {
         }
     }
 
-    public function processCookie() {
-        $cookie = $this->getLoginCookie();
-
-        if ($cookie === FALSE) {
-            return new Result(false, "Cookie not found");
-        } else {
-            $user = User::findUserIdByCookie($cookie);
-            if ($user === FALSE) {
-                return new Result(false, "Invalid cookie");
-            } else {
-                return new Result(true, "");
-            }
-        }
-    }
-
     private function getUserIdFromFacebook($token) {
         $session = new FacebookSession($token);
 
@@ -88,6 +59,27 @@ class Verifier {
         $graphObject = $response->getGraphObject();
         // handle facebook response object
         return $graphObject->id;
+    }
+
+    public function processCookie() {
+        $cookie = $this->getLoginCookie();
+
+        if ($cookie === FALSE) {
+            return new Result(false, "Cookie not found");
+        } else {
+            $user = User::findUserIdByCookie($cookie);
+            if ($user === FALSE) {
+                return new Result(false, "Invalid cookie");
+            } else {
+                return new Result(true, "");
+
+                // set global fields
+                $userID = User::findUserIdByCookie($cookie);
+                $token = User::findFacebookIdByCookie($cookie);
+
+                App::setLoggedIn($userID, $token);
+            }
+        }
     }
 
 	public function processToken() {
@@ -107,13 +99,19 @@ class Verifier {
                     $user = new User($existing_cookie);
                     // update cookie
                     $user->setCookie($cookie);
+                    // retrieve userID (using new cookie now)
+                    $userID = User::findUserIdByCookie($cookie);
                 } else {
-                    // new user
+                    // encountered new user. create it.
                     $userID = $this->getUserIdFromFacebook($token);
                     $user = User::createUser($userID, $cookie, $token);
                 }
                 // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
+
+                // set global fields
+                App::setLoggedIn($userID, $token);
+
                 return new Result(true, "Logged in");
             } else {
                 return new Result(false, "Invalid token");
