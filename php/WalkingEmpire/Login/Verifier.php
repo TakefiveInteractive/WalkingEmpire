@@ -22,7 +22,7 @@ class Verifier {
 		$decoded = json_decode($response);
 
 		// if we get something other than error messaage, the token is valid
-		if (is_array($decoded) && isset($decoded['id']) || is_object($decoded) && isset($decoded->id)) {
+		if (is_array($decoded) && !empty($decoded['id']) || is_object($decoded) && !empty($decoded->id)) {
 			return true;
 		}
 		return false;
@@ -40,7 +40,7 @@ class Verifier {
         $app = Slim::getInstance();
         $cookie = $app->getCookie(self::LOGIN_COOKIE_NAME);
 
-        if (isset($cookie)) {
+        if (!empty($cookie)) {
             return $cookie;
         } else {
             return FALSE;
@@ -59,7 +59,7 @@ class Verifier {
         $response = $request->execute();
         $graphObject = $response->getGraphObject();
         // handle facebook response object
-        return $graphObject->id;
+        return $graphObject->getProperty('id');
     }
 
     public function processCookie() {
@@ -78,7 +78,7 @@ class Verifier {
                 $userID = User::findUserIdByCookie($cookie);
                 $token = User::findFacebookIdByCookie($cookie);
 
-                App::setLoggedIn($userID, $token);
+                App::setLoggedIn($userID, $token, $cookie);
             }
         }
     }
@@ -96,7 +96,6 @@ class Verifier {
                 $existing_cookie = User::findCookieByFacebookId($token);
                 // is there already a cookie allotted to the user?
                 if (isset($existing_cookie)) {
-                    var_dump($existing_cookie);
                     // cookie on iOS side probably expired
                     $user = new User($existing_cookie);
                     // update cookie
@@ -107,13 +106,12 @@ class Verifier {
                     // encountered new user. create it.
                     $userID = $this->getUserIdFromFacebook($token);
                     $ret = User::createUser($userID, $cookie, $token);
-                    print_r($ret);
                 }
                 // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
 
                 // set global fields
-                App::setLoggedIn($userID, $token);
+                App::setLoggedIn($userID, $token, $cookie);
 
                 return new Result(true, "Logged in");
             } else {

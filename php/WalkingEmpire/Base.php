@@ -1,8 +1,10 @@
 <?php
 
 namespace WalkingEmpire;
+
 use WalkingEmpire\database\SQLUtils;
 use WalkingEmpire\Building\Structure;
+
 
 class Base {
 	private $baseId;

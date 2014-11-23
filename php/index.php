@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
+use Symfony\Component\ClassLoader\ApcClassLoader;
 
 class Main {
 
@@ -34,10 +35,11 @@ class Main {
 
     public function __construct() {
         // init autoloader
-        $this->loader = new UniversalClassLoader();
-        $this->loader->register();
+        $loader = new UniversalClassLoader();
+        $loader->registerNamespace('WalkingEmpire', __DIR__);
 
-        $this->loader->registerNamespace('WalkingEmpire', __DIR__);
+        $this->loader = new ApcClassLoader('ld_', $loader);
+        $this->loader->register();
 
         // create router instance
         $this->slim = new \Slim\Slim(array(
@@ -93,7 +95,16 @@ class Main {
         );
 
         $this->slim->post('/update_location', function() {
-            echo json_encode((new \WalkingEmpire\BaseManager())->queryAllBases());
+            $userManager = new \WalkingEmpire\UserManager();
+            $userManager->updateLocation();
+
+            // fetch location info of other users
+            $result1 = $userManager->getOtherUserLocations();
+            // fetch information about nearby bases
+            $result2 = (new \WalkingEmpire\BaseManager())->queryAllBases();
+            // final data structure is the combination of the two
+            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2);
+            return json_encode($finalResult);
         });
 
         $this->slim->post('/add_base', function() {

@@ -85,7 +85,7 @@ class User {
 	function setLocation($longitude, $latitude) {
 		$eqivalenceStr = sprintf("`longitude` = %f, `latitude` = %f", $longitude, $latitude);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else
 			return true;
@@ -126,14 +126,17 @@ class User {
 	function getLocation() {
 		$result = $this->sql->select("longitude, latitude", "users", "cookie", $this->cookie);
 		if ($result === false)
-			return false;
-		
+			return false;	
 		else
 			return $result;
 	}
 	
 	function getRow() {
 		$result = $this->sql->select("*", "users", "cookie", $this->cookie);
+		if ($result === false)
+			return false;	
+		else
+			return $result;
 	}
 }
 
