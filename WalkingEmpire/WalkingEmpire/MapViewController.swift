@@ -16,31 +16,33 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     
     var setUpped: Bool = false
     
+    var bases = [AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         var camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.23, zoom:18)
-        
+    
         map = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         map.myLocationEnabled = false
         self.view = map
 
-
         // Do any additional setup after loading the view.
     }
 
+    
+    
     func setUpMap(){
         
         resetPosition()
         
         general = GMSMarker(position: LocationInfo.getCurrentLocation().coordinate)
-        general.title = "self"
+        general.title = UserInfo.name
         general.snippet = "general"
         general.appearAnimation = kGMSMarkerAnimationPop
         general.map = map
-        general.icon = UIImage(named: "circle")
+        general.icon = UIImage(named: "UserIconBrown80x80MK2")
         general.groundAnchor = CGPointMake(0.5, 0.5)
         
     }

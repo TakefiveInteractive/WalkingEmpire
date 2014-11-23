@@ -10,6 +10,19 @@
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
+	<key>FacebookAppID</key>
+	<string>783258861766530</string>
+	<key>FacebookDisplayName</key>
+	<string>WalkingEmpire</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb783258861766530</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>

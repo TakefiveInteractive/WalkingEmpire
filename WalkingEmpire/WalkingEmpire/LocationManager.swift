@@ -20,24 +20,26 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
     
     var location:CLLocationManager = CLLocationManager()
     
-    func start(control: ViewController){
+    func setup(control: ViewController){
         
         controller = control
-        
         self.location.delegate = self
         self.location.desiredAccuracy = kCLLocationAccuracyBest
-        self.location.startUpdatingLocation()
+
         
     }
     
+    func start(){
+        self.location.startUpdatingLocation()
+        
+    }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-
-    
+        println(error)
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -51,7 +53,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
 
             if distance > 1{
                 MoneyResoursePopulationManager.addValue(distance)
-                (controller.childViewControllers[1] as ResourcesViewController).updateResources()
+                (controller.childViewControllers[2] as ResourcesViewController).updateResources()
                 removeAlldistance()
             }
         }

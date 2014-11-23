@@ -14,9 +14,9 @@ class ResourcesViewController: UIViewController {
     @IBOutlet var resource: UILabel!
     @IBOutlet var population: UILabel!
     
-    @IBOutlet var moneyPicture: UIImageView!
-    @IBOutlet var resourcePicture: UIImageView!
-    @IBOutlet var populationPicture: UIImageView!
+    @IBOutlet var moneyPicture: UIButton!
+    @IBOutlet var resourcePicture: UIButton!
+    @IBOutlet var populationPicture: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
