@@ -6,7 +6,7 @@ use WalkingEmpire\database\SQLUtils;
 use WalkingEmpire\Building\Structure;
 
 class Base {
-	private $baseId;
+	public $baseId;
 	private $longitude;
 	private $latitude;
 	private $createTime;
@@ -27,7 +27,8 @@ class Base {
 	}
 	
 	static function getBase($baseId) {
-		$result = $this->sql->getRow("bases", "baseid", $baseId);
+        $sql = new SQLUtils();
+		$result = $sql->getRow("bases", "baseid", $baseId);
 		if ($result === false)
 			return false;
 	
@@ -53,11 +54,11 @@ class Base {
 		return $array;
 	}
 
-	function __construct($baseId, $longitude, $latitude, $creator) {
+	function __construct($baseId, $longitude, $latitude, $owner) {
 		$this->baseId = $baseId;
 		$this->longitude = $longitude;
 		$this->latitude = $latitude;
-		$this->creator = $creator;
+		$this->owner = $owner;
 		
 		$this->sql = new SQLUtils();
 	}
@@ -65,13 +66,12 @@ class Base {
 	function create() {
 		// Get new baseid
 		$baseId = $this->generateId();
-		if ($baseId=== false)
+		if ($baseId === false)
 			return false;
 		$this->baseId = $baseId;
-	
 		$columnStr = "`baseid`, `longitude`, `latitude`, `owner`";
 		$valueStr = sprintf("'%s', '%s', '%s', '%s'", $baseId, $this->longitude, $this->latitude, $this->owner);
-		$result = $this->sql->insert("structures", $columnStr, $valueStr);
+		$result = $this->sql->insert("bases", $columnStr, $valueStr);
 		if ($result === false)
 			return false;
 	
@@ -100,8 +100,14 @@ class Base {
 			return false;
 		
 		$array = array();
-		foreach ($result as $tempRow)
-			$array[] = $tempRow['structure'];
+        if (count($result) !== 0) {
+            if (!is_array(array_values($result)[0])) {
+                $array = $result;
+            } else {
+                foreach ($result as $tempRow)
+                    $array[] = $tempRow['structure'];
+            }
+        }
 		
 		$structureArr = array();
 		foreach ($array as $structureId) {

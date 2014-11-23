@@ -10,10 +10,10 @@ class User {
 	private $facebookUserId;
 	private $cookie;
 	
-	static function createUser($facebookUserId, $cookie, $token) {
+	static function createUser($userId, $facebookUserId, $cookie) {
 		$sql = new SQLUtils();
-		$columnStr = "`facebookid`, `cookie`, `token`";
-		$valueStr = sprintf("'%s', '%s', '%s'", $facebookUserId, $cookie, $token);
+		$columnStr = "`userid`, `facebookid`, `cookie`";
+		$valueStr = sprintf("'%s', '%s', '%s'", $userId, $facebookUserId, $cookie);
 		$result = $sql->insert("users", $columnStr, $valueStr);
 		$sql->destroy();
 		if ($result === false)
@@ -29,7 +29,6 @@ class User {
 		if ($result === false)
 			return false;
 		
-		
 		return $result['userid'];
 	}
 	
@@ -38,7 +37,14 @@ class User {
 		$result = $sql->select("cookie", "users", "facebookid", $facebookid);
 		if ($result === false)
 			return false;
-		
+		return $result['cookie'];
+	}
+
+    static function findCookieByUserId($userid) {
+		$sql = new SQLUtils();
+		$result = $sql->select("cookie", "users", "userid", $userid);
+		if ($result === false)
+			return false;
 		return $result['cookie'];
 	}
 
@@ -60,6 +66,9 @@ class User {
 			return false;
 		
 		$array = array();
+        // if only one user is ever returned, the format of $result will be a one-dim array containing fields
+        // otherwise, $result is a two-dim array, where each element is an one-dim array containing the fields
+        if (!is_array(array_values($result)[0])) return array(new User($result['cookie']));
 		foreach ($result as $tempArr) {
 			$obj = new User($tempArr['cookie']);
 			$array[] = $obj;
@@ -74,11 +83,12 @@ class User {
 	}
 	
 	function getUsername() {
-		// Get username
+		// Get username from cookie
 		$usernameResult = User::findUserIdByCookie($this->cookie);
 		if ($usernameResult === false)
-			$this->userid = $usernameResult;
-		
+            return false;
+
+	    $this->userid = $usernameResult;
 		return $this->userid;
 	}
 	
@@ -91,6 +101,16 @@ class User {
 			return true;
 	}
 	
+    static function setCookieByUserId($cookie, $userId) {
+		$equivalenceStr = sprintf("`cookie` = '%s'", $cookie);
+		$result = (new SQLUtils())->update("users", $equivalenceStr, "userid", $userId);
+		if ($result === false)
+			return false;
+		else {
+			return true;
+		}
+	}
+
 	function setCookie($cookie) {
 		$equivalenceStr = sprintf("`cookie` = '%s'", $cookie);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
@@ -103,7 +123,7 @@ class User {
 	}
 	
 	function setToken($token) {
-		$eqivalenceStr = sprintf("`token` = '%s'", $token);
+		$eqivalenceStr = sprintf("`facebookid` = '%s'", $token);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
 		if ($result === false)
 			return false;
@@ -116,11 +136,11 @@ class User {
 	}
 	
 	function getToken() {
-		$result = $this->sql->select("token", "users", "cookie", $this->cookie);
+		$result = $this->sql->select("facebookid", "users", "cookie", $this->cookie);
 		if ($result === false)
 			return false;
 		
-		return $result['token'];
+		return $result['facebookid'];
 	}
 	
 	function getLocation() {

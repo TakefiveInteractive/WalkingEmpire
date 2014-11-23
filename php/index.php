@@ -53,12 +53,11 @@ class Main {
     }
     
     public function main() {
-        
 
         // since almost 100% responses are JSON, we set the Content-Type here.
         header('Content-Type: application/json');
 
-        $this->slim->get('/check_cookie', function() {
+        $this->slim->post('/check_cookie', function() {
             echo json_encode((new \WalkingEmpire\Login\Verifier())->processCookie());
         });
 
@@ -74,6 +73,7 @@ class Main {
             function() {
                 // obtain and set post data (JSON encoded)
                 $postData = file_get_contents('php://input');
+                $GLOBALS['pppp'] = $postData;
                 $decodedPostData = json_decode($postData);
  
                 // check if input is valid
@@ -118,8 +118,9 @@ class Main {
         });
 
         $this->slim->post('/add_base', function() {
+            echo $GLOBALS['pppp'];
             $baseManager = new \WalkingEmpire\BaseManager();
-            $baseManager->addBase();
+            echo json_encode($baseManager->addBase());
         });
 
         $this->slim->post('/lookup_base', function() {

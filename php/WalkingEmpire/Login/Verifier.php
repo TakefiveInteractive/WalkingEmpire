@@ -8,7 +8,6 @@ use \WalkingEmpire\User;
 use \WalkingEmpire\App;
 use \Slim\Slim;
 
-
 class Verifier {
 
 	function __construct() {
@@ -63,27 +62,35 @@ class Verifier {
     }
 
     public function processCookie() {
+        error_log("processCookie, ", 3, "/home/www-data/err.log");
+
         $cookie = $this->getLoginCookie();
 
-        if ($cookie === FALSE) {
+        error_log("Cookie: " . $cookie . "\n", 3, "/home/www-data/err.log");
+
+        if ($cookie === FALSE || !isset($cookie)) {
             return new Result(false, "Cookie not found");
         } else {
             $user = User::findUserIdByCookie($cookie);
-            if ($user === FALSE) {
-                return new Result(false, "Invalid cookie");
+            if ($user === FALSE || !isset($user)) {
+                error_log("Rejected\n", 3, "/home/www-data/err.log");
+                return new Result(false, "Invalid cookie: " . $cookie);
             } else {
-                return new Result(true, "");
-
                 // set global fields
                 $userID = User::findUserIdByCookie($cookie);
                 $token = User::findFacebookIdByCookie($cookie);
 
                 App::setLoggedIn($userID, $token, $cookie);
+                error_log("Accepted\n", 3, "/home/www-data/err.log");
+                error_log("Returning: " . json_encode(new Result(true, "")) . "\n", 3, "/home/www-data/err.log");
+                return new Result(true, "");
             }
         }
     }
 
 	public function processToken() {
+        error_log("processToken, ", 3, "/home/www-data/err.log");
+
         // initialize facebook app
 		FacebookSession::setDefaultApplication('783258861766530', '20433de1149ff2619a5a681f25ea74ea');
 
@@ -94,18 +101,31 @@ class Verifier {
                 // Sign in the user by generating random cookie
                 $cookie = base64_encode(openssl_random_pseudo_bytes(32));
                 $existing_cookie = User::findCookieByFacebookId($token);
+
+                if (!isset($existing_cookie)) {
+                    // did token change for the user?
+                    $userID = $this->getUserIdFromFacebook($token);
+                    $existing_cookie_usr = User::findCookieByUserId($userID);
+                    if (isset($existing_cookie_usr))
+                        $existing_cookie = $existing_cookie_usr;
+                }
+
                 // is there already a cookie allotted to the user?
                 if (isset($existing_cookie)) {
+                    error_log("existing cookie found: $existing_cookie, ", 3, "/home/www-data/err.log");
+
                     // cookie on iOS side probably expired
                     $user = new User($existing_cookie);
                     // update cookie
-                    $user->setCookie($cookie);
+                    $ret = $user->setCookie($cookie);
+                    if ($ret === FALSE)
+                        return new Result(false, "Failed to set cookie in DB");
                     // retrieve userID (using new cookie now)
                     $userID = User::findUserIdByCookie($cookie);
                 } else {
                     // encountered new user. create it.
                     $userID = $this->getUserIdFromFacebook($token);
-                    $ret = User::createUser($userID, $cookie, $token);
+                    $ret = User::createUser($userID, $token, $cookie);
                 }
                 // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
@@ -113,6 +133,8 @@ class Verifier {
                 // set global fields
                 App::setLoggedIn($userID, $token, $cookie);
 
+                error_log("UserID: " . $userID . ", setCookie: " . $cookie . "\n", 3, "/home/www-data/err.log");
+                
                 return new Result(true, "Logged in");
             } else {
                 return new Result(false, "Invalid token");
