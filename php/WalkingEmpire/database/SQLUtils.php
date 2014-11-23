@@ -38,7 +38,8 @@ class SQLUtils {
 	}
 	
 	function update($table, $equivalenceStr, $parameter, $value) {
-		$queryStr = sprintf("UPDATE `%s` SET (%s) WHERE `%s` = '%s'", $table, $equivalenceStr, $parameter, $value);
+		$queryStr = sprintf("UPDATE `%s` SET %s WHERE `%s` = '%s'", $table, $equivalenceStr, $parameter, $value);
+        //var_dump($queryStr);
 		$result = mysqli_query($this->conn, $queryStr);
 		return $result;
 	}

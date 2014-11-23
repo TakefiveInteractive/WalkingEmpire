@@ -2,6 +2,8 @@
 
 namespace WalkingEmpire;
 
+use \WalkingEmpire\Login\Result;
+
 class LocationInfo {
     public $latitude;
     public $longitude;
@@ -30,6 +32,7 @@ class UserManager {
     }
 
     public function updateLocation() {
+        // verify inputs
         if (!Util\Coord::hasLatLon($this->input))
             return new Result(false, "No location information.");
         // create User instance
@@ -46,11 +49,11 @@ class UserManager {
         $returnArr = array();
         $size = count($allUsers);
         for ($i = 0; $i < $size; $i++) {
-            // skip our user
+            // eliminate our user from results
             if ($allUsers[$i]->getUsername() === $thisId) continue;
             // add to the array to be returned
             $location = $allUsers[$i]->getLocation();
-            $returnArr[$allUsers[$i]->getToken()] = new LocationInfo($location['latitude'], $location['longitude']);
+            $returnArr[$allUsers[$i]->getUsername()] = new LocationInfo($location['latitude'], $location['longitude']);
         }
         
         $returnClass = new OtherUserLocationsResponse(true, $returnArr);

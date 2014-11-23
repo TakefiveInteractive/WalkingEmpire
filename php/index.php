@@ -53,12 +53,11 @@ class Main {
     }
     
     public function main() {
-        
 
         // since almost 100% responses are JSON, we set the Content-Type here.
         header('Content-Type: application/json');
 
-        $this->slim->get('/check_cookie', function() {
+        $this->slim->post('/check_cookie', function() {
             echo json_encode((new \WalkingEmpire\Login\Verifier())->processCookie());
         });
 
@@ -119,7 +118,7 @@ class Main {
 
         $this->slim->post('/add_base', function() {
             $baseManager = new \WalkingEmpire\BaseManager();
-            $baseManager->addBase();
+            echo json_encode($baseManager->addBase());
         });
 
         $this->slim->post('/lookup_base', function() {
