@@ -69,7 +69,7 @@ abstract class Structure {
 		
 		$columnStr = "`structureid`, `base`, `type`, `name`, `row`, `col`, 
 				`integrity`, `createtime`, `creator`";
-		$valueStr = sprintf("%s, %s, %s, %s, %s, %s, %s, %s, %s", 
+		$valueStr = sprintf("'%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'", 
 				$structureId, $this->baseId, $this->type, $this->name,
 				$this->row, $this->col, $this->integrity, time(), $this->creator);
 		
@@ -81,7 +81,7 @@ abstract class Structure {
 	}
 	
 	function setIntegrity($integrity) {
-		$equivalenceStr = sprintf("`integrity` = %s", $integrity);
+		$equivalenceStr = sprintf("`integrity` = '%s'", $integrity);
 		$result = $this->sql->update("structures", $equivalenceStr, "structureid", $this->structureId);
 		if ($result === false)
 			return false;
