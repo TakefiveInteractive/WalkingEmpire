@@ -9,7 +9,7 @@ class User {
 	private $facebookUserId;
 	private $cookie;
 	
-	static function createuser($facebookUserId, $cookie, $token) {
+	static function createUser($facebookUserId, $cookie, $token) {
 		$sql = new SQLUtils();
 		$columnStr = "`facebookid`, `cookie`, `token`";
 		$valueStr = sprintf("'%s', '%s', '%s'", $facebookUserId, $cookie, $token);

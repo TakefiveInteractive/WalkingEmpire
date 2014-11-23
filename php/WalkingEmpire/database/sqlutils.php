@@ -12,9 +12,16 @@ class SQLUtils {
 	function select($column, $table, $parameter, $value) {
 		$queryStr = sprintf("SELECT %s FROM `%s` WHERE `%s` = '%s'", $column, $table, $parameter, $value);
 		$result = mysql_query($queryStr, $this->conn);
-		$row = mysql_fetch_array($result);
-		if (mysql_errno($this->conn) == 0)
-			return $row;
+		if (mysql_errno($this->conn) == 0) {
+			if (mysql_num_rows($result) > 1) {
+				$array = array();
+				while ($row = mysql_fetch_array($result))
+					$array[] = $row;
+				return $array;
+			}
+			else
+				return mysql_fetch_array($result);
+		}
 		else
 			return false;
 	}

@@ -9,6 +9,8 @@ class Base {
 	private $createTime;
 	private $owner;
 	
+	private $structure;
+	
 	private $sql;
 	
 	static function newBase($longitude, $latitude, $owner) {
@@ -57,8 +59,16 @@ class Base {
 		return true;
 	}
 	
-	function update() {
+	function getStructure() {
+		$result = $this->sql->select("*", "structures", "base", $this->baseId);
+		if ($result === false)
+			return false;
 		
+		$array = array();
+		foreach ($result as $tempRow)
+			$array[] = $tempRow['structure'];
+		
+		return $array;
 	}
 	
 	function changeOwner($owner) {
@@ -72,10 +82,9 @@ class Base {
 	}
 	
 	function getStatus() {
-		$array = array('type' => $this->type,
-				'row' => $this->row,
-				'column' => $this->column,
-				'createTime' => $this->createTime,
+		$array = array('baseId' => $this->baseId,
+				'longitude' => $this->longitude,
+				'latitude' => $this->latitude,
 				'owner' => $this->owner);
 	
 		return $array;
