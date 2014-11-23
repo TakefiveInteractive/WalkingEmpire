@@ -82,6 +82,17 @@ Server response: Case I
 			"longitude": 3.14159
 		}
 	},
+    "users": {      // shows other users
+        // indexed by their facebook userIDs
+        "4893210483": {
+            "latitude": 0.4234,
+            "longitude": 23
+        },
+        "4243242134": {
+            "latitude": 43,
+            "longitude": 11
+        }
+    },
     "last_updated": 4891243240
 }
 ```
@@ -100,7 +111,19 @@ Server response: Case II
 			"latitude": 2,
 			"longitude": 3.14159
 		}
-	}
+	},
+    "users": {      // shows other users
+        // indexed by their facebook userIDs
+        "4893210483": {
+            "latitude": 0.4234,
+            "longitude": 23
+        },
+        "4243242134": {
+            "latitude": 43,
+            "longitude": 11
+        }
+    }
+    "last_updated": 4213094897
 }
 ```
 The client is responsible for checking cases (e.g. by detecting whether `buildings` key is in the dictionary). In case one, the client should apply the changes to its local buildings data structure. In case two, the client have to rebuild the entire buildings data structure from the `bases` list. Case two will only happen if the client have not pulled changes from the server for a very long time (like five days). The list of changes is prohibitively expensive to maintain in the long run, so it is capped to five days max.
