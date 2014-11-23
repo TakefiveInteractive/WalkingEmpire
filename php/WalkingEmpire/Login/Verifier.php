@@ -59,7 +59,7 @@ class Verifier {
         $response = $request->execute();
         $graphObject = $response->getGraphObject();
         // handle facebook response object
-        return $graphObject->id;
+        return $graphObject->getProperty('id');
     }
 
     public function processCookie() {
@@ -96,7 +96,6 @@ class Verifier {
                 $existing_cookie = User::findCookieByFacebookId($token);
                 // is there already a cookie allotted to the user?
                 if (isset($existing_cookie)) {
-                    var_dump($existing_cookie);
                     // cookie on iOS side probably expired
                     $user = new User($existing_cookie);
                     // update cookie
@@ -107,7 +106,6 @@ class Verifier {
                     // encountered new user. create it.
                     $userID = $this->getUserIdFromFacebook($token);
                     $ret = User::createUser($userID, $cookie, $token);
-                    print_r($ret);
                 }
                 // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
