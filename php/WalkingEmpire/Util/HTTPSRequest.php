@@ -28,7 +28,7 @@ class HTTPSRequest {
             return $body;
         }
         curl_close($ch);
-        trigger_error("HTTPS: Bad response: " . $response, E_USER_WARNING);
+        // trigger_error("HTTPS: Bad response: " . $response, E_USER_WARNING);
         return FALSE;
     }
 }
