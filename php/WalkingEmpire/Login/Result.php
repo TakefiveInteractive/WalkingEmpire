@@ -1,6 +1,6 @@
 <?php
 
-namespace WalkingEmpire/Login;
+namespace WalkingEmpire\Login;
 
 /**
  * JSON class representing login result

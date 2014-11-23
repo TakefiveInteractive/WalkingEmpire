@@ -1,6 +1,7 @@
 <?php
 
-include_once 'database/sqlutils.php';
+namespace WalkingEmpire;
+use WalkingEmpire\database\SQLUtils;
 
 class User {
 	private $sql;

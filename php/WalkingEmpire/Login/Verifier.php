@@ -3,8 +3,8 @@
 namespace WalkingEmpire\Login;
 
 use Facebook\FacebookSession;
-use WalkingEmpire\User;
-use WalkingEmpire\App;
+use \WalkingEmpire\User;
+use \WalkingEmpire\App;
 use \Slim\Slim;
 
 
@@ -21,7 +21,7 @@ class Verifier {
 		$decoded = json_decode($response);
 
 		// if we get something other than error messaage, the token is valid
-		if (isset($decoded['id'])) {
+		if (is_array($decoded) && isset($decoded['id']) || is_object($decoded) && isset($decoded->id)) {
 			return true;
 		}
 		return false;
