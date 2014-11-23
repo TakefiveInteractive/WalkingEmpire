@@ -6,7 +6,7 @@ class SQLUtils {
 	
 	private $conn;
 	
-	function SQLUtils() {
+	function __construct() {
 		$this->conn = mysql_connect("54.201.2.40", "walkingempire", "h22HT2cWPsb8QaMx");
 		mysql_select_db("billboard", $this->conn);
 	}
