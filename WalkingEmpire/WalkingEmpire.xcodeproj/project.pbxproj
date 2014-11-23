@@ -39,6 +39,8 @@
 		42893B1A1A1E815000155C15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0E1A1E815000155C15 /* OpenGLES.framework */; };
 		42893B1B1A1E815000155C15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0F1A1E815000155C15 /* QuartzCore.framework */; };
 		42893B1C1A1E815000155C15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B101A1E815000155C15 /* SystemConfiguration.framework */; };
+		8804E5D71A2239DA00A33EA7 /* GameIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8804E5D61A2239DA00A33EA7 /* GameIcon.png */; };
+		8804E5D91A223B3400A33EA7 /* rsz_gameicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8804E5D81A223B3400A33EA7 /* rsz_gameicon.png */; };
 		8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,8 @@
 		42893B0F1A1E815000155C15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42893B101A1E815000155C15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		42893B1D1A1E839100155C15 /* WalkingEmpire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalkingEmpire-Bridging-Header.h"; sourceTree = "<group>"; };
+		8804E5D61A2239DA00A33EA7 /* GameIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameIcon.png; path = ../../../../../Desktop/GameIcon.png; sourceTree = "<group>"; };
+		8804E5D81A223B3400A33EA7 /* rsz_gameicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rsz_gameicon.png; path = ../../../../../Downloads/rsz_gameicon.png; sourceTree = "<group>"; };
 		8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlPanel.png; path = UI/ControlPanel.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -177,6 +181,8 @@
 				4238D8281A20971A006AE0A6 /* ResourcesViewController.swift */,
 				420537791A206F47000AFB3A /* LocationManager.swift */,
 				4238D8261A20933C006AE0A6 /* MoneyResourcePopulation.swift */,
+				8804E5D61A2239DA00A33EA7 /* GameIcon.png */,
+				8804E5D81A223B3400A33EA7 /* rsz_gameicon.png */,
 				426680F31A1E4BEE00ACD53D /* Images.xcassets */,
 				426680F51A1E4BEE00ACD53D /* LaunchScreen.xib */,
 				426680EB1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld */,
@@ -298,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8804E5D71A2239DA00A33EA7 /* GameIcon.png in Resources */,
 				8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */,
 				4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */,
 				426680F21A1E4BEE00ACD53D /* Main.storyboard in Resources */,
@@ -307,6 +314,7 @@
 				4238D82B1A20EC9E006AE0A6 /* circle.png in Resources */,
 				426680F41A1E4BEE00ACD53D /* Images.xcassets in Resources */,
 				42893B041A1E80BF00155C15 /* GoogleMaps.bundle in Resources */,
+				8804E5D91A223B3400A33EA7 /* rsz_gameicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
