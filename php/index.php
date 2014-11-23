@@ -95,8 +95,16 @@ class Main {
         );
 
         $this->slim->post('/update_location', function() {
-            (new \WalkingEmpire\UserManager())->updateLocation();
-            echo json_encode((new \WalkingEmpire\BaseManager())->queryAllBases());
+            $userManager = new \WalkingEmpire\UserManager();
+            $userManager->updateLocation();
+
+            // fetch location info of other users
+            $result1 = $userManager->getOtherUserLocations();
+            // fetch information about nearby bases
+            $result2 = (new \WalkingEmpire\BaseManager())->queryAllBases();
+            // final data structure is the combination of the two
+            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2);
+            return json_encode($finalResult);
         });
 
         $this->slim->post('/add_base', function() {

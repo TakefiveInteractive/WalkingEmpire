@@ -22,7 +22,7 @@ class Verifier {
 		$decoded = json_decode($response);
 
 		// if we get something other than error messaage, the token is valid
-		if (is_array($decoded) && isset($decoded['id']) || is_object($decoded) && isset($decoded->id)) {
+		if (is_array($decoded) && !empty($decoded['id']) || is_object($decoded) && !empty($decoded->id)) {
 			return true;
 		}
 		return false;
@@ -40,7 +40,7 @@ class Verifier {
         $app = Slim::getInstance();
         $cookie = $app->getCookie(self::LOGIN_COOKIE_NAME);
 
-        if (isset($cookie)) {
+        if (!empty($cookie)) {
             return $cookie;
         } else {
             return FALSE;
