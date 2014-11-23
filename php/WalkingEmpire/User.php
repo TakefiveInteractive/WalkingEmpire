@@ -76,9 +76,9 @@ class User {
 	}
 	
 	function setCookie($cookie) {
-		$eqivalenceStr = sprintf("`cookie` = '%s'", $cookie);
+		$equivalenceStr = sprintf("`cookie` = '%s'", $cookie);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else {
 			$this->cookie = $cookie;
@@ -89,7 +89,7 @@ class User {
 	function setToken($token) {
 		$eqivalenceStr = sprintf("`token` = '%s'", $token);
 		$result = $this->sql->update("users", $equivalenceStr, "cookie", $this->cookie);
-		if (result === false)
+		if ($result === false)
 			return false;
 		else
 			return true;

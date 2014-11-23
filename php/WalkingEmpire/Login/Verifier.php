@@ -3,6 +3,7 @@
 namespace WalkingEmpire\Login;
 
 use Facebook\FacebookSession;
+use Facebook\FacebookRequest;
 use \WalkingEmpire\User;
 use \WalkingEmpire\App;
 use \Slim\Slim;
@@ -94,7 +95,8 @@ class Verifier {
                 $cookie = base64_encode(openssl_random_pseudo_bytes(32));
                 $existing_cookie = User::findCookieByFacebookId($token);
                 // is there already a cookie allotted to the user?
-                if ($existing_cookie !== FALSE) {
+                if (isset($existing_cookie)) {
+                    var_dump($existing_cookie);
                     // cookie on iOS side probably expired
                     $user = new User($existing_cookie);
                     // update cookie
@@ -104,7 +106,8 @@ class Verifier {
                 } else {
                     // encountered new user. create it.
                     $userID = $this->getUserIdFromFacebook($token);
-                    $user = User::createUser($userID, $cookie, $token);
+                    $ret = User::createUser($userID, $cookie, $token);
+                    print_r($ret);
                 }
                 // tell client to use our newest cookie
                 $this->setLoginCookie($cookie);
