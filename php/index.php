@@ -3,6 +3,7 @@
 require 'vendor/autoload.php';
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
+use Symfony\Component\ClassLoader\ApcClassLoader;
 
 class Main {
 
@@ -34,10 +35,11 @@ class Main {
 
     public function __construct() {
         // init autoloader
-        $this->loader = new UniversalClassLoader();
-        $this->loader->register();
+        $loader = new UniversalClassLoader();
+        $loader->registerNamespace('WalkingEmpire', __DIR__);
 
-        $this->loader->registerNamespace('WalkingEmpire', __DIR__);
+        $this->loader = new ApcClassLoader('ld_', $loader);
+        $this->loader->register();
 
         // create router instance
         $this->slim = new \Slim\Slim(array(
