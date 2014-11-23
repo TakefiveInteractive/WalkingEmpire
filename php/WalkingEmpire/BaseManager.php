@@ -89,16 +89,15 @@ class BaseManager {
     public function addBase() {
         // check if input data structure is legal
         if (!Util\Coord::hasLatLon($this->input))
-            return new Result(false, "No location information.");
-
+            return new Result(false, "No location information");
         $ret = Base::newBase($this->input->longitude, $this->input->latitude, App::getUserID());
         if ($ret === FALSE)
             return new Result(false, "Creating base failed.");
 
         return new AddBaseResponse(true, $ret->baseId);
     }
-
-    public function getBase() {
+    
+    private function verifyBaseIdInput() {
         if (!property_exists($this->input, "baseID"))
             return new Result(false, "baseID needed");
 
@@ -107,29 +106,68 @@ class BaseManager {
         if (!isset($base))
             return new Result(false, "non-existent base");
 
+        return new Result(true);
+    }
+
+    public function getBase() {
+        $verifyResult = $this->verifyBaseIdInput();
+        if (!$verifyResult->success)
+            return $verifyResult;
         // get all the structures in a base
+        $base = Base::getBase($this->input->baseID);
         $structures = $base->getStructure();
         $ret = new getBaseResponse(true, $structures);
+        return $ret;
     }
 
     public function foughtBase() {
+        $verifyResult = $this->verifyBaseIdInput();
+        if (!$verifyResult->success)
+            return $verifyResult;
+
+        $inputStructures = $this->input->structures;
+        $inputKeytoStructures = array();
+        // use id of each structure as an index
+        foreach ($inputStructures as $x) {
+            $inputKeytoStructures[$x->id] = $x;
+        }
+
+        $base = Base::getBase($this->input->baseID);
+        $structures = $base->getStructure();
+        // iterate through array, updating/removing structures as necessary
+        foreach ($structures as $key => $structure) {
+            $structureStatus = $structure->getStatus();
+            $id = $structureStatus['structureId'];
+            if (isset($inputKeytoStructures[$id])) {
+                // update
+                $ret = $structure->setIntegrity($inputKeytoStructures[$id]->hp);    
+            } else {
+                // destroy
+                $ret = $structure->destroy();
+            }
+            if ($ret === FALSE) return new Result(false, "Cannot modify structure.");
+        }
+        return new Result(true);
     }
 
     public function buildStructure() {
+        $verifyResult = $this->verifyBaseIdInput();
+        if (!$verifyResult->success)
+            return $verifyResult;
+        $structure = $this->input->structure;
+
+        $ret = Structure::newStructure($structure->type, $this->input->baseID, $structure->tileY, $structure->tileX, App::getUserID());
     }
 
     public function takeOverBase() {
     }
 
     public function destroyBase() {
-        if (!property_exists($this->input, "baseID"))
-            return new Result(false, "baseID needed");
+        $verifyResult = $this->verifyBaseIdInput();
+        if (!$verifyResult->success)
+            return $verifyResult;
 
-        $baseID = $this->input->baseID;
-        $base = Base::getBase($baseID);
-        if (!isset($base))
-            return new Result(false, "non-existent base");
-
+        $base = Base::getBase($this->input->baseID);
         $ret = $base->destroy();
         if ($ret === FALSE)
             return new Result(false, "destroying base failed");

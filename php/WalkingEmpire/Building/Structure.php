@@ -5,10 +5,22 @@ use WalkingEmpire\Building\War;
 use WalkingEmpire\Building\Resource;
 use WalkingEmpire\database\SQLUtils;
 
+/* ENUM */
+abstract class StructureTypes {
+    const Arcane = 1;
+    const Archer = 2;
+    const Cannon = 3;
+    const Dark   = 4;
+    const Mega   = 5;
+    const Oil    = 6;
+    const Tar    = 7;
+}
+
 abstract class Structure {
 	// Type parameters:
 	// 99: command
 	// 1: 
+
 	private $structureId;
 	private $type;
 	private $baseId;
@@ -24,6 +36,9 @@ abstract class Structure {
 	private $sql;
 	
 	static function newStructure($type, $baseId, $row, $column, $creator) {
+        // convert enum name to type id
+        $type = StructureTypes::$type;
+
 		$obj = new Structure(null, $type, $baseId, $row, $column, 100, time(), $creator);
 		
 		$result = $this->create();
