@@ -6,23 +6,23 @@ class SQLUtils {
 	
 	private $conn;
 	
-	function __construct() {
-		$this->conn = mysql_connect("54.201.2.40", "walkingempire", "h22HT2cWPsb8QaMx");
-		mysql_select_db("billboard", $this->conn);
+    function SQLUtils() {
+		$this->conn = mysqli_connect("54.201.2.40", "walkingempire", "h22HT2cWPsb8QaMx");
+		mysqli_select_db("billboard", $this->conn);
 	}
 	
 	function select($column, $table, $parameter, $value) {
 		$queryStr = sprintf("SELECT %s FROM `%s` WHERE `%s` = '%s'", $column, $table, $parameter, $value);
-		$result = mysql_query($queryStr, $this->conn);
-		if (mysql_errno($this->conn) == 0) {
-			if (mysql_num_rows($result) > 1) {
+		$result = mysqli_query($queryStr, $this->conn);
+		if (mysqli_errno($this->conn) == 0) {
+			if (mysqli_num_rows($result) > 1) {
 				$array = array();
-				while ($row = mysql_fetch_array($result))
+				while ($row = mysqli_fetch_array($result))
 					$array[] = $row;
 				return $array;
 			}
 			else
-				return mysql_fetch_array($result);
+				return mysqli_fetch_array($result);
 		}
 		else
 			return false;
@@ -30,8 +30,8 @@ class SQLUtils {
 	
 	function insert($table, $columnStr, $valueStr) {
 		$queryStr = sprintf("INSERT INTO `%s` (%s) VALUES (%s)", $table, $columnStr, $valueStr);
-		$result = mysql_query($queryStr, $this->conn);
-		if (mysql_errno($this->conn) == 0)
+		$result = mysqli_query($queryStr, $this->conn);
+		if (mysqli_errno($this->conn) == 0)
 			return true;
 		else
 			return false;
@@ -39,13 +39,13 @@ class SQLUtils {
 	
 	function update($table, $equivalenceStr, $parameter, $value) {
 		$queryStr = sprintf("UPDATE `%s` SET (%s) WHERE `%s` = '%s'", $table, $equivalenceStr, $parameter, $value);
-		$result = mysql_query($queryStr, $this->conn);
+		$result = mysqli_query($queryStr, $this->conn);
 		return $result;
 	}
 	
 	function delete($table, $parameter, $value) {
 		$queryStr = sprintf("DELETE FROM `%s` WHERE `%s` = '%s'", $table, $parameter, $value);
-		$result = mysql_query($queryStr, $this->conn);
+		$result = mysqli_query($queryStr, $this->conn);
 		return $result;
 	}
 	
@@ -59,21 +59,21 @@ class SQLUtils {
 	
 	function checkAvailability($table, $parameter, $value) {
 		$queryStr = sprintf("SELECT '%s' FROM `%s` WHERE `%s` = '%s'", "*", $table, $parameter, $value);
-		$result = mysql_query($queryStr, $this->conn);
-		if (mysql_num_rows($result) == 0)
+		$result = mysqli_query($queryStr, $this->conn);
+		if (mysqli_num_rows($result) == 0)
 			return true;
 		else
 			return false;
 	}
 	
 	function customQuery($queryStr) {
-		return mysql_query($queryStr, $this->conn);
+		return mysqli_query($queryStr, $this->conn);
 	}
 	
 	function generateId() {
 		$customQueryInput = "SELECT `userid` FROM `bbUsers` ORDER BY `userid` DESC";
 		$result = $this->customQuery($customQueryInput);
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$userId = $row['userid'] + 1;
 		return $userId;
 	}
@@ -83,7 +83,7 @@ class SQLUtils {
 	}
 	
 	function destroy() {
-		mysql_close($this->conn);
+		mysqli_close($this->conn);
 	}
 	
 }
