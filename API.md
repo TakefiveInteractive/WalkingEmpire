@@ -53,24 +53,23 @@ Method: POST
 Client request
 ```
 {
-	username: "xxxx",
-	latitude: 0,
-	longitude: 0,
-	distance: 0,
+	"latitude": 0,
+	"longitude": 0,
+    "money": 10000          // or points, or score, or whatever
 
 	// time when client last fetched buildings data from server
-	last_updated: 341294028		// epoch time in seconds
+	"last_updated": 341294028		// epoch time in seconds
 }
 ```
 
-Server response
+Server response: Case I
 ```
 {
 	"success": true,
 	"base_removed": ["", ""],   // array of building IDs
 	"base_changed": {           // when someone captured the base
 	},
-	"buildings_added": {        // when someone built a base
+	"bases_added": {            // when someone built a base
 		"1234124": {
 			"userid": "yyyy",
 			"latitude": 0,
@@ -84,6 +83,25 @@ Server response
 	}
 }
 ```
+Server response: Case II
+```
+{
+	"success": true,
+	"bases": {        // list of all buildings
+		"1234124": {
+			"userid": "yyyy",
+			"latitude": 0,
+			"longitude": 0
+		},
+		"2345234": {
+			"userid": "xxxx",
+			"latitude": 2,
+			"longitude": 3.14159
+		}
+	}
+}
+```
+The client is responsible for checking cases (e.g. by detecting whether `buildings` key is in the dictionary). In case one, the client should apply the changes to its local buildings data structure. In case two, the client have to rebuild the entire buildings data structure from the `bases` list. Case two will only happen if the client have not pulled changes from the server for a very long time (like five days). The list of changes is prohibitively expensive to maintain in the long run, so it is capped to five days max.
 
 ##Add a base
 URL: `/add_base`

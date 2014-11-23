@@ -73,7 +73,9 @@ class Main {
             function() {
                 $cookieCheckResponse = $this->checkCredentials($this->slim->router()->getCurrentRoute()->getPattern());
                 // if the verifier says no? (don't use isset cuz isset considers "FALSE" as not set)
-                if (is_object($cookieCheckResponse) && property_exists($cookieCheckResponse, "success") && $cookieCheckResponse->success === FALSE) {
+                if (is_object($cookieCheckResponse)     // response is an object
+                    && property_exists($cookieCheckResponse, "success")     // an object containing "success" field
+                    && $cookieCheckResponse->success === FALSE) {           // "success" shows failed
                     // stop the request and return failed info
                     $this->slim->halt(403, json_encode($cookieCheckResponse));
                 }
@@ -105,8 +107,9 @@ class Main {
         });
 
         $this->slim->get('/server_stats', function() {
+            // clear the JSON header and reset it to text/html to accomodate phpinfo();
             header_remove('Content-Type');
-            header('Content-Type: application/json');
+            header('Content-Type: text/html');
             phpinfo();
         });
 
