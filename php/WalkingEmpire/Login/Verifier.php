@@ -100,7 +100,7 @@ class Verifier {
             if ($this->validateAccessToken($token)) {
                 // Sign in the user by generating random cookie
                 $cookie = base64_encode(openssl_random_pseudo_bytes(32));
-                $existing_cookie = User::findCookiieByFacebookId($token);
+                $existing_cookie = User::findCookieByFacebookId($token);
                 // is there already a cookie allotted to the user?
                 if ($existing_cookie !== FALSE) {
                     // cookie on iOS side probably expired
@@ -119,7 +119,7 @@ class Verifier {
                 return new Result(false, "Invalid token");
             }
         } else {
-            return new Result(false, "Invalid payload");
+            return new Result(false, "Invalid payload: " . print_r(App::getInput(), TRUE));
         }
 	}
 

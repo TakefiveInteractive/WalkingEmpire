@@ -10,7 +10,7 @@ class App {
     private static $input_data;
 
     public static function setInput($input) {
-        $input_data = $input;
+        self::$input_data = $input;
     }
 
     public static function getInput() {

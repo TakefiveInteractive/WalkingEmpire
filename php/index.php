@@ -6,9 +6,13 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 
 class Main {
 
+    /**
+     * URL whitelist. Those not in the list require valid cookie.
+     */
     private $openPaths = array(
         "/login" => 1,
-        "/check_cookie" => 1
+        "/check_cookie" => 1,
+        "/server_stats" => 1
     );
 
     private $slim;
@@ -50,6 +54,9 @@ class Main {
         
         // obtain and set post data (JSON encoded)
         \WalkingEmpire\App::setInput(json_decode(file_get_contents('php://input')));
+
+        // since almost 100% responses are JSON, we set the Content-Type here.
+        header('Content-Type: application/json');
 
         $this->slim->get('/check_cookie', function() {
             echo json_encode((new \WalkingEmpire\Login\Verifier())->processCookie());
@@ -98,6 +105,8 @@ class Main {
         });
 
         $this->slim->get('/server_stats', function() {
+            header_remove('Content-Type');
+            header('Content-Type: application/json');
             phpinfo();
         });
 
