@@ -107,8 +107,9 @@ class Main {
         });
 
         $this->slim->get('/server_stats', function() {
+            // clear the JSON header and reset it to text/html to accomodate phpinfo();
             header_remove('Content-Type');
-            header('Content-Type: application/json');
+            header('Content-Type: text/html');
             phpinfo();
         });
 
