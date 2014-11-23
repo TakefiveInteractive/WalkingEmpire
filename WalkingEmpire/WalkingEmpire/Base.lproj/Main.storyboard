@@ -75,19 +75,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KfG-3r-bAL">
-                                <rect key="frame" x="132" y="28" width="42" height="21"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="sAL-6w-fHU">
+                                <rect key="frame" x="16" y="33" width="288" height="370"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConstructionsPanel.png" id="o8g-TZ-C7X">
-                                <rect key="frame" x="6" y="70" width="308" height="373"/>
+                                <rect key="frame" x="6" y="11" width="308" height="426"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="constructionPanel" destination="o8g-TZ-C7X" id="eYG-4u-FIc"/>
+                        <outlet property="scroller" destination="sAL-6w-fHU" id="fnl-g0-KLR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqZ-If-WRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,7 +146,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ViewTowerBrown200x200.png" id="4Kw-ak-CAh">
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ViewTowerBrown.png" id="4Kw-ak-CAh">
                                 <rect key="frame" x="81" y="351" width="159" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -313,7 +314,7 @@
         <image name="MaterialBar.png" width="238" height="65"/>
         <image name="MenuButton.png" width="92" height="93"/>
         <image name="PeopleBar.png" width="198" height="68"/>
-        <image name="ViewTowerBrown200x200.png" width="200" height="200"/>
+        <image name="ViewTowerBrown.png" width="200" height="200"/>
         <image name="login.png" width="395" height="184"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

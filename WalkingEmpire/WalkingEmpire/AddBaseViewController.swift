@@ -53,14 +53,13 @@ class AddBaseViewController: UIViewController {
         ((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).tempBase.map = ((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).map
         
         var result = InteractingWithServer.addBase(((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).tempBase.position)
-        println("\(result)@@@@@@@@@@@@@@@@@@")
         //BaseIdentifier upload
-        //if result != "failed"{
+        if result != "failed"{
 
             ((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).tempBase.identifier = result
             ((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).bases.append(((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).tempBase)
             ((self.parentViewController as ViewController).childViewControllers[0] as MapViewController).tempBase = nil
-        //}
+        }
         
         
     }

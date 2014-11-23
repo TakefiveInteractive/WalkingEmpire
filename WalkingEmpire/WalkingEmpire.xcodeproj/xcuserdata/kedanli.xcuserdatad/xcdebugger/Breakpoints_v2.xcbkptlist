@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WalkingEmpire/InteractingWithServer.swift"
-            timestampString = "438441873.236379"
+            timestampString = "438460825.037051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "checkCookie()"
             landmarkType = "5">
          </BreakpointContent>

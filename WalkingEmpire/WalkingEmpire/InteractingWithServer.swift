@@ -1,4 +1,3 @@
-//
 //  InteractingWithServer.swift
 //  NBillBoard
 //
@@ -35,17 +34,21 @@ class InteractingWithServer: NSObject {
 
     }
 
-    class func updateLocation(){
+    class func updateLocation()->[String: AnyObject]{
         
         var result:[String: AnyObject] = [String: AnyObject]()
-        let info :[String: AnyObject] = ["latitude": LocationInfo.getCurrentLocation().coordinate.latitude, "longitude": LocationInfo.getCurrentLocation().coordinate.longitude]
+        let info :[String: AnyObject] = ["latitude": Double(LocationInfo.getCurrentLocation().coordinate.latitude), "longitude": Double(LocationInfo.getCurrentLocation().coordinate.longitude)]
         result = InteractingWithServer.connect("/update_location", info: info, method:"POST")
         
+        return result
     }
     
     class func addBase(coordinate: CLLocationCoordinate2D)->String{
         var result:[String: AnyObject] = [String: AnyObject]()
         let info :[String: AnyObject] = ["latitude": coordinate.latitude, "longitude": coordinate.longitude]
+        
+        println(info)
+        
         result = InteractingWithServer.connect("/add_base", info: result, method:"POST")
         
         if result["success"] as Bool{
@@ -53,7 +56,6 @@ class InteractingWithServer: NSObject {
         }else {
             return "failed"
         }
-            
 
     }
     
@@ -67,9 +69,12 @@ class InteractingWithServer: NSObject {
         
         var error: NSError?
         
+        println(info)
         // create some JSON data and configure the request
         var jsonData: NSData = NSJSONSerialization.dataWithJSONObject(info, options: NSJSONWritingOptions.PrettyPrinted, error: &error)!
-        
+        println("ddd")
+        println(jsonData)
+
         request.HTTPBody = jsonData//jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
         request.HTTPMethod = method
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

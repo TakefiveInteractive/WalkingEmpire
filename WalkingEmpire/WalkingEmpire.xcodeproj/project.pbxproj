@@ -71,7 +71,8 @@
 		42953BC11A2223CC00CB01B6 /* BuildingDisplayPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */; };
 		42953BC31A222F2500CB01B6 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC21A222F2500CB01B6 /* login.png */; };
 		42953BC51A22379D00CB01B6 /* BaseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */; };
-		42953BC71A223D6500CB01B6 /* ConstructionsPanelSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */; };
+		42B56C601A22610200185344 /* ConstructionsPanelSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 42B56C5F1A22610200185344 /* ConstructionsPanelSquare.png */; };
+		42B56C621A22612D00185344 /* ConstructionsPanelSelectionH.png in Resources */ = {isa = PBXBuildFile; fileRef = 42B56C611A22612D00185344 /* ConstructionsPanelSelectionH.png */; };
 		8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */; };
 /* End PBXBuildFile section */
 
@@ -157,7 +158,8 @@
 		42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuildingDisplayPanel.png; sourceTree = "<group>"; };
 		42953BC21A222F2500CB01B6 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoViewController.swift; sourceTree = "<group>"; };
-		42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanelSquare.png; sourceTree = "<group>"; };
+		42B56C5F1A22610200185344 /* ConstructionsPanelSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanelSquare.png; sourceTree = "<group>"; };
+		42B56C611A22612D00185344 /* ConstructionsPanelSelectionH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanelSelectionH.png; sourceTree = "<group>"; };
 		8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlPanel.png; path = UI/ControlPanel.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -252,8 +254,9 @@
 				42953BBC1A22233500CB01B6 /* ConstructionsPanel.png */,
 				42953BBE1A22235400CB01B6 /* BackwardButton.png */,
 				42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */,
-				42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */,
 				42953BC21A222F2500CB01B6 /* login.png */,
+				42B56C5F1A22610200185344 /* ConstructionsPanelSquare.png */,
+				42B56C611A22612D00185344 /* ConstructionsPanelSelectionH.png */,
 				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
 				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
 				42953BAC1A21AA0100CB01B6 /* AddBaseViewController.swift */,
@@ -418,6 +421,7 @@
 				42953BBF1A22235400CB01B6 /* BackwardButton.png in Resources */,
 				8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */,
 				4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */,
+				42B56C601A22610200185344 /* ConstructionsPanelSquare.png in Resources */,
 				42953BB61A21D09500CB01B6 /* OtherUserIcon.png in Resources */,
 				42953B6A1A2150E000CB01B6 /* UserInformation.plist in Resources */,
 				42953BBD1A22233500CB01B6 /* ConstructionsPanel.png in Resources */,
@@ -438,6 +442,7 @@
 				42953BA51A21A54C00CB01B6 /* ConfirmButton.png in Resources */,
 				42953BC31A222F2500CB01B6 /* login.png in Resources */,
 				4238D82B1A20EC9E006AE0A6 /* circle.png in Resources */,
+				42B56C621A22612D00185344 /* ConstructionsPanelSelectionH.png in Resources */,
 				42953BA61A21A54C00CB01B6 /* ConfirmPanel.png in Resources */,
 				42953BC11A2223CC00CB01B6 /* BuildingDisplayPanel.png in Resources */,
 				42953BA21A21A54C00CB01B6 /* BuyButton.png in Resources */,
@@ -447,7 +452,6 @@
 				42953BAA1A21A87B00CB01B6 /* BlackDrop.png in Resources */,
 				42893B041A1E80BF00155C15 /* GoogleMaps.bundle in Resources */,
 				42953B9B1A219A8300CB01B6 /* RegionCircle.png in Resources */,
-				42953BC71A223D6500CB01B6 /* ConstructionsPanelSquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

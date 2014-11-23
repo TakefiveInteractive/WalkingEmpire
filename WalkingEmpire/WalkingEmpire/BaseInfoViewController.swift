@@ -8,11 +8,39 @@
 
 import UIKit
 
-class BaseInfoViewController: UIViewController {
+class BaseInfoViewController: UIViewController, UIScrollViewDelegate {
+
+    
+    @IBOutlet var constructionPanel : UIImageView!
+    @IBOutlet var scroller : UIScrollView!
+    //@IBOutlet var block : UIButton!
+    
+    var constructionArea = [[UIButton]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        scroller.scrollEnabled = true;
+        scroller.contentSize = CGSizeMake(4, 512);
+        
+        for var x: Int = 0; x < 8; x++ {
+            
+            constructionArea.append([UIButton]())
+            
+            for var y: Int = 0; y < 8; y++ {
 
+            var building = UIButton(frame: CGRectMake(64 * CGFloat(x), 64 * CGFloat(y), 64,64))
+                building.setImage(UIImage(named: "ConstructionsPanelSquare"), forState: UIControlState.Normal)
+                building.setImage(UIImage(named: "ConstructionsPanelSelectionH"), forState: UIControlState.Highlighted)
+                building.addTarget(self, action: "constructionAreaClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+                self.scroller.addSubview(building)
+                constructionArea[x].append(building)
+            }
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -20,6 +48,12 @@ class BaseInfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func constructionAreaClicked(sender:UIButton!){
+        
+    }
+    
+    
     
 
     /*
