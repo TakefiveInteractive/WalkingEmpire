@@ -5,7 +5,6 @@ namespace WalkingEmpire;
 use WalkingEmpire\database\SQLUtils;
 use WalkingEmpire\Building\Structure;
 
-
 class Base {
 	private $baseId;
 	private $longitude;
@@ -145,7 +144,7 @@ class Base {
 		$result = $this->sql->customQuery($customQueryInput);
 		if ($result === false)
 			return false;
-		$baseId = $row['baseid'] + 1;
+		$baseId = $result['baseid'] + 1;
 		return $baseId;
 	}
 }

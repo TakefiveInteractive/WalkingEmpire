@@ -67,15 +67,19 @@ class SQLUtils {
 	}
 	
 	function customQuery($queryStr) {
-		return mysqli_query($this->conn, $queryStr);
-	}
-	
-	function generateId() {
-		$customQueryInput = "SELECT `userid` FROM `bbUsers` ORDER BY `userid` DESC";
-		$result = $this->customQuery($customQueryInput);
-		$row = mysqli_fetch_array($result);
-		$userId = $row['userid'] + 1;
-		return $userId;
+		$result = mysqli_query($this->conn, $queryStr);
+		if (mysqli_errno($this->conn) == 0) {
+			if (mysqli_num_rows($result) > 1) {
+				$array = array();
+				while ($row = mysqli_fetch_array($result))
+					$array[] = $row;
+				return $array;
+			}
+			else
+				return mysqli_fetch_array($result);
+		}
+		else
+			return false;
 	}
 	
 	function getConnection() {

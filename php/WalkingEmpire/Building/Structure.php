@@ -1,16 +1,13 @@
 <?php
 
 namespace WalkingEmpire\Building;
-
-
-include_once 'Resource.php';
-include_once 'War.php';
-
-include_once '../datatbase/sqlutils.php';
+use WalkingEmpire\Building\War;
+use WalkingEmpire\Building\Resource;
+use WalkingEmpire\database\SQLUtils;
 
 abstract class Structure {
 	// Type parameters:
-	// 0: command
+	// 99: command
 	// 1: 
 	private $structureId;
 	private $type;
@@ -106,7 +103,7 @@ abstract class Structure {
 		$result = $this->sql->customQuery($customQueryInput);
 		if ($result === false)
 			return false;
-		$structureId = $row['userid'] + 1;
+		$structureId = $result['structureid'] + 1;
 		return $structureId;
 	}
 	

@@ -1,4 +1,5 @@
 <?php
+
 namespace WalkingEmpire\Building;
 use WalkingEmpire\database\SQLUtils;
 
@@ -20,7 +21,7 @@ class Log {
 	}
 	
 	static function getlog($startAt, $endAt) {
-		$queryStr = sprintf("SELECT * FROM `logs` WHERE `time` > '%s' AND `time` < '%s'", 
+		$queryStr = sprintf("SELECT * FROM `logs` WHERE `time` >= '%s' AND `time` <= '%s'", 
 				$startAt, $endAt);
 		$sql = new SQLUtils();
 		$result = $sql->customQuery($queryStr);
