@@ -151,7 +151,12 @@ class BaseManager {
     }
 
     public function buildStructure() {
+        $verifyResult = $this->verifyBaseIdInput();
+        if (!$verifyResult->success)
+            return $verifyResult;
+        $structure = $this->input->structure;
 
+        $ret = Structure::newStructure($structure->type, $this->input->baseID, $structure->tileY, $structure->tileX, App::getUserID());
     }
 
     public function takeOverBase() {
