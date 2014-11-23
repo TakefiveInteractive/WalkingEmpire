@@ -73,6 +73,7 @@ class Main {
             function() {
                 // obtain and set post data (JSON encoded)
                 $postData = file_get_contents('php://input');
+                $GLOBALS['pppp'] = $postData;
                 $decodedPostData = json_decode($postData);
  
                 // check if input is valid
@@ -117,6 +118,7 @@ class Main {
         });
 
         $this->slim->post('/add_base', function() {
+            echo $GLOBALS['pppp'];
             $baseManager = new \WalkingEmpire\BaseManager();
             echo json_encode($baseManager->addBase());
         });

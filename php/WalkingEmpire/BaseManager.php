@@ -89,7 +89,7 @@ class BaseManager {
     public function addBase() {
         // check if input data structure is legal
         if (!Util\Coord::hasLatLon($this->input))
-            return new Result(false, "No location information.");
+            return new Result(false, "No location information");
         $ret = Base::newBase($this->input->longitude, $this->input->latitude, App::getUserID());
         if ($ret === FALSE)
             return new Result(false, "Creating base failed.");
