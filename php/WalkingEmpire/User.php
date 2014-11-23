@@ -52,7 +52,7 @@ class User {
 		return $result['facebookid'];
 	}
 	
-	static function getAllUsers() {
+	public static function getAllUsers() {
 		$sql = new SQLUtils();
 		$queryStr = "SELECT * FROM `users`";
 		$result = $sql->customQuery($queryStr);

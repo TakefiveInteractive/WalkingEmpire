@@ -19,7 +19,7 @@ class Result {
     /**
      * Merge two Result classes. If one of them is unsucessful, the resulting Result will be unsucessful.
      */
-    public static function mergeResults($obj1, $obj2) {
+    public static function mergeResults($obj1, $obj2, $obj1_name, $obj2_name) {
         $success1 = $obj1->success;
         $success2 = $obj2->success;
 
@@ -37,7 +37,9 @@ class Result {
         else
             $comment = $obj2->comment;
 
-        $array_merged = array_merge($arr1, $arr2);
+        $array_merged = array();
+        $array_merged[$obj1_name] = $arr1;
+        $array_merged[$obj2_name] = $arr2;
         if (!empty($comment)) $array_merged['comment'] = $comment;
 
         // if one result fails, final result fails.
@@ -46,8 +48,7 @@ class Result {
         else
             $array_merged['success'] = true;
 
-        $obj_merged = (object) $array_merged;
-        return $obj_merged;
+        return $array_merged;
     }
 
 }

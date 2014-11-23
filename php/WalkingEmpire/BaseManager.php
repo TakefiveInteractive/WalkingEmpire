@@ -13,8 +13,58 @@ class AddBaseResponse extends Result {
     }
 }
 
-class GetBaseResponse extends Result {
+class StructureResponse {
+    public $id;
+    public $hp;
+    public $type;
+    public $tileX;
+    public $tileY;
 
+    public function __construct($structure) {
+        $stFields = $structure->getStatus();
+        $this->id = $stFields['structureId'];
+        $this->hp = $stFields['integrity'];
+        // TODO: get type!
+        $this->type = "default"; 
+        $this->tileX = $stFields['column'];
+        $this->tileY = $stFields['row'];
+    }
+}
+
+class GetBaseResponse extends Result {
+    public $structures = array();
+
+    public function __construct($success, ($input) {
+        parent::__construct($success);
+        foreach ($input as $structure)
+            $structures[] = new StructureResponse($structure);
+    }
+}
+
+class BaseResponse {
+    public $userid;
+    public $latitude;
+    public $longitude;
+
+    public function __construct($base) {
+        $bFields = $base->getStatus();
+        $this->userid = $bFields['owner'];
+        $this->latitude = $bFields['latitude'];
+        $this->longitude = $bFields['longitude'];
+    }
+}
+
+class queryAllBasesFullResponse extends Result {
+    public $bases = array();
+
+    public function __construct($success, $baseArr) {
+        parent::__construct($success);
+        foreach ($baseArr as $base) {
+            $bFields = $base->getStatus();
+            $baseId = $bFields['baseId'];
+            $bases[$baseId] = new BaseResponse($base);
+        }
+    }
 }
 
 class BaseManager {
@@ -31,7 +81,9 @@ class BaseManager {
     public function queryAllBases() {
         if (!property_exists($this->input, "last_updated"))
             return new Result(false, "No last_updated");
-        //
+        // tentatively return everything
+        $bases = Base::getAllBases();
+        return new queryAllBasesFullResponse(true, $bases);
     }
 
     public function addBase() {
@@ -57,7 +109,7 @@ class BaseManager {
 
         // get all the structures in a base
         $structures = $base->getStructure();
-
+        $ret = new getBaseResponse(true, $structures);
     }
 
     public function foughtBase() {
@@ -70,6 +122,19 @@ class BaseManager {
     }
 
     public function destroyBase() {
+        if (!property_exists($this->input, "baseID"))
+            return new Result(false, "baseID needed");
+
+        $baseID = $this->input->baseID;
+        $base = Base::getBase($baseID);
+        if (!isset($base))
+            return new Result(false, "non-existent base");
+
+        $ret = $base->destroy();
+        if ($ret === FALSE)
+            return new Result(false, "destroying base failed");
+
+        return new Result(true);
     }
 
     private function updateBase() {

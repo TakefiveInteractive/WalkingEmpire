@@ -103,7 +103,7 @@ class Main {
             // fetch information about nearby bases
             $result2 = (new \WalkingEmpire\BaseManager())->queryAllBases();
             // final data structure is the combination of the two
-            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2);
+            $finalResult = \WalkingEmpire\Login\Result::mergeResults($result1, $result2, "bases", "users");
             return json_encode($finalResult);
         });
 

@@ -37,7 +37,23 @@ class Base {
 	
 		return $obj;
 	}
-	
+
+    public static function getAllBases() {
+		$sql = new SQLUtils();
+		$queryStr = "SELECT * FROM `bases`";
+		$result = $sql->customQuery($queryStr);
+		if ($result === false)
+			return false;
+		
+		$array = array();
+		foreach ($result as $x) {
+			$obj = new Base($x['baseid'], $x['longitude'], $x['latitude'], $x['owner']);
+			$array[] = $obj;
+		}
+		
+		return $array;
+	}
+
 	function __construct($baseId, $longitude, $latitude, $creator) {
 		$this->baseId = $baseId;
 		$this->longitude = $longitude;
