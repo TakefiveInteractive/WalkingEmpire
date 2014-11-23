@@ -9,47 +9,45 @@
 import UIKit
 import CoreLocation
 
-class ObjectsOnMap: NSObject {
+class ObjectsOnMap: GMSMarker {
     
     var user: String!
-    var coordinate: CLLocationCoordinate2D!
     
-    init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees){
+    init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, map: GMSMapView){
+        super.init()
         self.user = user
-        self.coordinate.latitude = latitude
-        self.coordinate.longitude = longitude
+        self.map = map
+        self.appearAnimation = kGMSMarkerAnimationPop
+        self.position = CLLocationCoordinate2DMake(latitude, longitude)
+        self.groundAnchor = CGPointMake(0.5, 0.5)
     }
     
 }
 
 class General: ObjectsOnMap{
     
-    var icon: UIImage = UIImage(named: "UserIconBlack80x80Quantz")!
-    
-    override init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees) {
+    override init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, map: GMSMapView){
         
-        super.init(user: user, longitude: longitude, latitude: latitude)
-        
+        super.init(user: user, longitude: longitude, latitude: latitude, map: map)
+        self.icon = UsefulFunctions.changeImageSize(UIImage(named: "OtherUserIcon")!, size: CGSizeMake(80, 80))
     }
     
 }
 
-class Building: ObjectsOnMap{
-    
-    var icon: UIImage = UIImage()
+class Base: ObjectsOnMap{
     
     var identifier: String!
     
-    init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, identifier: String) {
+    init(user: String, longitude: CLLocationDegrees, latitude: CLLocationDegrees, map: GMSMapView, identifier: String){
         
-        super.init(user: user, longitude: longitude, latitude: latitude)
-        
+        super.init(user: user, longitude: longitude, latitude: latitude, map: map)
+
         self.identifier = identifier
-        
+
         if user == UserInfo.userid{
-            icon = UIImage(named: "ViewTowerBrown50x50MK4")!
+            self.icon = UsefulFunctions.changeImageSize(UIImage(named: "ViewTowerBrown")!, size: CGSizeMake(50, 50))
         }else{
-            icon = UIImage(named: "ViewTowerDarkGray50x50MK4")!
+            self.icon = UsefulFunctions.changeImageSize(UIImage(named: "ViewTowerBlack")!, size: CGSizeMake(50, 50))
         }
     }
     

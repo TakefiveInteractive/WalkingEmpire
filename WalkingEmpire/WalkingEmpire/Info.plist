@@ -10,6 +10,12 @@
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CarterOne.ttf</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>FacebookAppID</key>
 	<string>783258861766530</string>
 	<key>FacebookDisplayName</key>

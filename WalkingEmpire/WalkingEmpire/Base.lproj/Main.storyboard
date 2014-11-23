@@ -3,6 +3,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="CarterOne.ttf">
+            <string>CarterOne</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -62,6 +67,32 @@
             </objects>
             <point key="canvasLocation" x="128" y="192"/>
         </scene>
+        <!--Base Info View Controller-->
+        <scene sceneID="PHR-4f-tBd">
+            <objects>
+                <viewController storyboardIdentifier="baseInfo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mqi-lQ-cPU" customClass="BaseInfoViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ai6-8O-y1O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KfG-3r-bAL">
+                                <rect key="frame" x="132" y="28" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConstructionsPanel.png" id="o8g-TZ-C7X">
+                                <rect key="frame" x="6" y="70" width="308" height="373"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqZ-If-WRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="-447"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="Yel-5R-9Gw">
             <objects>
@@ -77,29 +108,59 @@
             </objects>
             <point key="canvasLocation" x="547" y="-169"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Add Base View Controller-->
         <scene sceneID="sMA-YG-dQ9">
             <objects>
-                <viewController storyboardIdentifier="login" id="zit-6D-l8Q" customClass="LoginViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="confirmBase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zit-6D-l8Q" customClass="AddBaseViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cz8-9P-OxO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" id="mby-gU-gEu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlackDrop.png" id="JKR-ta-QeD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login.png" id="JAh-dO-xv6">
-                                <rect key="frame" x="18" y="221" width="284" height="127"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConfirmPanel.png" id="JAh-dO-xv6">
+                                <rect key="frame" x="13" y="78" width="294" height="180"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eGS-FV-4S6">
+                                <rect key="frame" x="53" y="217" width="146" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="BuyButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UYl-MA-6KB">
+                                <rect key="frame" x="212" y="213" width="56" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="CancelButton.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eZy-XY-zzq">
+                                <rect key="frame" x="108" y="226" width="65" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CarterOne" family="Carter One" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ViewTowerBrown200x200.png" id="4Kw-ak-CAh">
+                                <rect key="frame" x="81" y="351" width="159" height="164"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="close" destination="UYl-MA-6KB" id="B3X-8W-ocg"/>
+                        <outlet property="confirm" destination="eGS-FV-4S6" id="XP3-Rg-Jd5"/>
+                        <outlet property="money" destination="eZy-XY-zzq" id="UAF-Md-dkL"/>
+                        <outlet property="tower" destination="4Kw-ak-CAh" id="F1m-Se-LqQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ly-bs-Uvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-309" y="-141"/>
+            <point key="canvasLocation" x="-759" y="661"/>
         </scene>
         <!--Resources View Controller-->
         <scene sceneID="LlY-Tc-GX2">
@@ -214,15 +275,45 @@
             </objects>
             <point key="canvasLocation" x="263" y="677"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="hH2-Rc-3x9">
+            <objects>
+                <viewController storyboardIdentifier="login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uJI-Em-sFA" customClass="LoginViewController" customModule="WalkingEmpire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NcE-GU-00f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" id="eY5-R1-hbr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login.png" id="3ZS-h3-H24">
+                                <rect key="frame" x="18" y="221" width="284" height="127"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-OH-krr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-309" y="-141"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BackDirection.png" width="128" height="128"/>
+        <image name="BlackDrop.png" width="640" height="1136"/>
+        <image name="BuyButton.png" width="134" height="48"/>
+        <image name="CancelButton.png" width="87" height="85"/>
         <image name="CoinBar.png" width="238" height="67"/>
+        <image name="ConfirmPanel.png" width="365" height="192"/>
         <image name="ConstructButton.png" width="128" height="128"/>
         <image name="ConstructButtonSelected.png" width="150" height="150"/>
+        <image name="ConstructionsPanel.png" width="613" height="799"/>
         <image name="MaterialBar.png" width="238" height="65"/>
         <image name="MenuButton.png" width="92" height="93"/>
         <image name="PeopleBar.png" width="198" height="68"/>
+        <image name="ViewTowerBrown200x200.png" width="200" height="200"/>
         <image name="login.png" width="395" height="184"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

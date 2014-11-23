@@ -31,6 +31,10 @@ class UserInformation: NSObject {
         DataManager.saveUserInfoToLocal(data)
     }
     
+    func logout(){
+        var data:[String: AnyObject] = ["name":"","accessToken":"","userid":""]
+    }
+    
     func isLogined()->Bool{
         
         if name == "" && userid == ""{

@@ -23,36 +23,71 @@ class InteractingWithServer: NSObject {
         
         let info :[String: AnyObject] = ["userid": UserInfo.userid, "token": UserInfo.accessToken]
         
-        result = InteractingWithServer.connect("/login", info: info)
+        result = InteractingWithServer.connect("/login", info: info, method:"POST")
         return result["success"] as Bool
     }
     
-    class func connect(suffix: String ,info:[String: AnyObject])-> [String:AnyObject]{
+    class func checkCookie()->Bool{
+    
+        var result:[String: AnyObject] = [String: AnyObject]()
+        result = InteractingWithServer.connect("/check_cookie", info: result, method:"POST")
+        return result["success"] as Bool
+
+    }
+
+    class func updateLocation(){
+        
+        var result:[String: AnyObject] = [String: AnyObject]()
+        let info :[String: AnyObject] = ["latitude": LocationInfo.getCurrentLocation().coordinate.latitude, "longitude": LocationInfo.getCurrentLocation().coordinate.longitude]
+        result = InteractingWithServer.connect("/update_location", info: info, method:"POST")
+        
+    }
+    
+    class func addBase(coordinate: CLLocationCoordinate2D)->String{
+        var result:[String: AnyObject] = [String: AnyObject]()
+        let info :[String: AnyObject] = ["latitude": coordinate.latitude, "longitude": coordinate.longitude]
+        result = InteractingWithServer.connect("/add_base", info: result, method:"POST")
+        
+        if result["success"] as Bool{
+            return result["baseID"] as String
+        }else {
+            return "failed"
+        }
+            
+
+    }
+    
+    class func connect(suffix: String ,info:[String: AnyObject], method:String)-> [String:AnyObject]{
         
         var result:[String: AnyObject] = [String: AnyObject]()
         
         var request = NSMutableURLRequest(URL: NSURL(string: InteractingWithServer.getServerAddress() + suffix)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
-        var response: NSURLResponse?
+
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?>=nil
+        
         var error: NSError?
         
         // create some JSON data and configure the request
         var jsonData: NSData = NSJSONSerialization.dataWithJSONObject(info, options: NSJSONWritingOptions.PrettyPrinted, error: &error)!
         
         request.HTTPBody = jsonData//jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
-        //request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        var returnData:NSData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)!
-        
+        request.HTTPMethod = method
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        //println(request.description)
+        //println(info)
+        var returnData = NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error: &error)!
+        //println(error)
         if (error == nil){
             
-            println(response)
+            var data = NSString(data: returnData, encoding: NSASCIIStringEncoding)
             
-            if let httpResponse = response as? NSHTTPURLResponse {
-                
+            println(data)
                 //var returnData = httpResponse.textEncodingName!.dataUsingEncoding(NSUTF8StringEncoding)
-                var jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.AllowFragments, error: &error)
-                result = jsonObject as [String: AnyObject]!
+            var jsonObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(returnData, options: NSJSONReadingOptions.AllowFragments, error: &error)
+            
+
+            if jsonObject != nil{
+                result = jsonObject as [String: AnyObject]
                 
                 println(result)
                 
@@ -62,7 +97,10 @@ class InteractingWithServer: NSObject {
                     result.updateValue(false, forKey: "success")
                     result.updateValue(result["comment"] as String, forKey: "error")
                 }
+            }else{
+                result.updateValue(false, forKey: "success")
             }
+            
         }else{
             result.updateValue(false, forKey: "success")
         }
@@ -76,8 +114,6 @@ class InteractingWithServer: NSObject {
         let reach = Reachability()
         var internetReachable = Reachability(hostName: "www.apple.com")
         var status: NetworkStatus = internetReachable.currentReachabilityStatus()
-        
-        println(status.value)
         
         
         if status == 0{
@@ -99,9 +135,6 @@ class InteractingWithServer: NSObject {
         let reach = Reachability()
         var internetReachable = Reachability(hostName: "www.apple.com")
         var status: NetworkStatus = internetReachable.currentReachabilityStatus()
-        
-        println(status.value)
-
         
         if status == 0{
             result = false

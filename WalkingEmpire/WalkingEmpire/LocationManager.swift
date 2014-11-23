@@ -55,6 +55,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
                 MoneyResoursePopulationManager.addValue(distance)
                 (controller.childViewControllers[1] as ResourcesViewController).updateResources()
                 removeAlldistance()
+                
+                if InteractingWithServer.getIfConnected(){
+                    InteractingWithServer.updateLocation()
+                }
+                
             }
         }
         (controller.childViewControllers[0] as MapViewController).updateLocation()
