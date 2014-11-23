@@ -75,7 +75,7 @@ class User {
 	
 	function getUsername() {
 		// Get username
-		$usernameResult = User::findUserIdByCookie($cookie);
+		$usernameResult = User::findUserIdByCookie($this->cookie);
 		if ($usernameResult === false)
 			$this->userid = $usernameResult;
 		

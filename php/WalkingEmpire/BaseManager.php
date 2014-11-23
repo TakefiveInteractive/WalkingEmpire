@@ -34,7 +34,7 @@ class StructureResponse {
 class GetBaseResponse extends Result {
     public $structures = array();
 
-    public function __construct($success, ($input) {
+    public function __construct($success, $input) {
         parent::__construct($success);
         foreach ($input as $structure)
             $structures[] = new StructureResponse($structure);
