@@ -122,6 +122,16 @@ class Main {
             echo json_encode($baseManager->foughtBase());
         });
 
+        $this->slim->post('/takeover_base', function() {
+            $baseManager = new \WalkingEmpire\BaseManager();
+            echo json_encode($baseManager->takeOverBase());
+        });
+
+        $this->slim->post('/destroy_base', function() {
+            $baseManager = new \WalkingEmpire\BaseManager();
+            echo json_encode($baseManager->destroyBase());
+        });
+
         $this->slim->post('/build_structure', function() {
             $baseManager = new \WalkingEmpire\BaseManager();
             echo json_encode($baseManager->buildStructure());

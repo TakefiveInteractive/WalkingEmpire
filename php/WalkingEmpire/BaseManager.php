@@ -66,6 +66,12 @@ class BaseManager {
     public function buildStructure() {
     }
 
+    public function takeOverBase() {
+    }
+
+    public function destroyBase() {
+    }
+
     private function updateBase() {
         // 
     }
