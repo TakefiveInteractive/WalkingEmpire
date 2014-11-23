@@ -25,6 +25,10 @@
 		426680F41A1E4BEE00ACD53D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426680F31A1E4BEE00ACD53D /* Images.xcassets */; };
 		426680F71A1E4BEE00ACD53D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426680F51A1E4BEE00ACD53D /* LaunchScreen.xib */; };
 		426681031A1E4BEF00ACD53D /* WalkingEmpireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426681021A1E4BEF00ACD53D /* WalkingEmpireTests.swift */; };
+		4266A7AD1A21224900DFD69F /* ObjectsOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266A7AC1A21224900DFD69F /* ObjectsOnMap.swift */; };
+		4266A7BC1A212D5000DFD69F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266A7BB1A212D5000DFD69F /* DataManager.swift */; };
+		4266A7C11A2135D500DFD69F /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266A7C01A2135D500DFD69F /* UserInformation.swift */; };
+		4266A7C31A21398500DFD69F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266A7C21A21398500DFD69F /* LoginViewController.swift */; };
 		42893B021A1E805600155C15 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B011A1E805600155C15 /* GoogleMaps.framework */; };
 		42893B041A1E80BF00155C15 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42893B031A1E80BF00155C15 /* GoogleMaps.bundle */; };
 		42893B111A1E815000155C15 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B051A1E815000155C15 /* AVFoundation.framework */; };
@@ -39,6 +43,38 @@
 		42893B1A1A1E815000155C15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0E1A1E815000155C15 /* OpenGLES.framework */; };
 		42893B1B1A1E815000155C15 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B0F1A1E815000155C15 /* QuartzCore.framework */; };
 		42893B1C1A1E815000155C15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42893B101A1E815000155C15 /* SystemConfiguration.framework */; };
+<<<<<<< HEAD
+=======
+		42953B6A1A2150E000CB01B6 /* UserInformation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42953B691A2150E000CB01B6 /* UserInformation.plist */; };
+		42953B6F1A21529600CB01B6 /* InteractingWithServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953B6E1A21529600CB01B6 /* InteractingWithServer.swift */; };
+		42953B721A215A0400CB01B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 42953B711A215A0400CB01B6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42953B8C1A21856700CB01B6 /* BackDirection.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B881A21856700CB01B6 /* BackDirection.png */; };
+		42953B8D1A21856700CB01B6 /* ConstructButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B891A21856700CB01B6 /* ConstructButton.png */; };
+		42953B8E1A21856700CB01B6 /* ConstructButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B8A1A21856700CB01B6 /* ConstructButtonSelected.png */; };
+		42953B8F1A21856700CB01B6 /* MenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B8B1A21856700CB01B6 /* MenuButton.png */; };
+		42953B921A21888600CB01B6 /* UserIconBlack80x80Quantz.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B901A21888600CB01B6 /* UserIconBlack80x80Quantz.png */; };
+		42953B931A21888600CB01B6 /* UserIconBrown80x80Quantz.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B911A21888600CB01B6 /* UserIconBrown80x80Quantz.png */; };
+		42953B9B1A219A8300CB01B6 /* RegionCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B9A1A219A8300CB01B6 /* RegionCircle.png */; };
+		42953BA21A21A54C00CB01B6 /* BuyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B9D1A21A54C00CB01B6 /* BuyButton.png */; };
+		42953BA31A21A54C00CB01B6 /* BuyButtonShort.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B9E1A21A54C00CB01B6 /* BuyButtonShort.png */; };
+		42953BA41A21A54C00CB01B6 /* CancelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953B9F1A21A54C00CB01B6 /* CancelButton.png */; };
+		42953BA51A21A54C00CB01B6 /* ConfirmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BA01A21A54C00CB01B6 /* ConfirmButton.png */; };
+		42953BA61A21A54C00CB01B6 /* ConfirmPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BA11A21A54C00CB01B6 /* ConfirmPanel.png */; };
+		42953BA81A21A75100CB01B6 /* CarterOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42953BA71A21A75100CB01B6 /* CarterOne.ttf */; };
+		42953BAA1A21A87B00CB01B6 /* BlackDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BA91A21A87B00CB01B6 /* BlackDrop.png */; };
+		42953BAD1A21AA0100CB01B6 /* AddBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953BAC1A21AA0100CB01B6 /* AddBaseViewController.swift */; };
+		42953BAF1A21B41E00CB01B6 /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953BAE1A21B41E00CB01B6 /* UsefulFunctions.swift */; };
+		42953BB61A21D09500CB01B6 /* OtherUserIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BB41A21D09500CB01B6 /* OtherUserIcon.png */; };
+		42953BB71A21D09500CB01B6 /* UserIconCrown.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BB51A21D09500CB01B6 /* UserIconCrown.png */; };
+		42953BBA1A21D98100CB01B6 /* ViewTowerBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BB81A21D98100CB01B6 /* ViewTowerBlack.png */; };
+		42953BBB1A21D98100CB01B6 /* ViewTowerBrown.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BB91A21D98100CB01B6 /* ViewTowerBrown.png */; };
+		42953BBD1A22233500CB01B6 /* ConstructionsPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BBC1A22233500CB01B6 /* ConstructionsPanel.png */; };
+		42953BBF1A22235400CB01B6 /* BackwardButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BBE1A22235400CB01B6 /* BackwardButton.png */; };
+		42953BC11A2223CC00CB01B6 /* BuildingDisplayPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */; };
+		42953BC31A222F2500CB01B6 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC21A222F2500CB01B6 /* login.png */; };
+		42953BC51A22379D00CB01B6 /* BaseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */; };
+		42953BC71A223D6500CB01B6 /* ConstructionsPanelSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */; };
+>>>>>>> IOS-Kedan
 		8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +112,10 @@
 		426680FC1A1E4BEF00ACD53D /* WalkingEmpireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalkingEmpireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		426681011A1E4BEF00ACD53D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		426681021A1E4BEF00ACD53D /* WalkingEmpireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingEmpireTests.swift; sourceTree = "<group>"; };
+		4266A7AC1A21224900DFD69F /* ObjectsOnMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectsOnMap.swift; sourceTree = "<group>"; };
+		4266A7BB1A212D5000DFD69F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		4266A7C01A2135D500DFD69F /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		4266A7C21A21398500DFD69F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		42893B011A1E805600155C15 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = WalkingEmpire/GoogleMaps.framework; sourceTree = "<group>"; };
 		42893B031A1E80BF00155C15 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = WalkingEmpire/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		42893B051A1E815000155C15 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +131,39 @@
 		42893B0F1A1E815000155C15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		42893B101A1E815000155C15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		42893B1D1A1E839100155C15 /* WalkingEmpire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalkingEmpire-Bridging-Header.h"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		42953B691A2150E000CB01B6 /* UserInformation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserInformation.plist; sourceTree = "<group>"; };
+		42953B6E1A21529600CB01B6 /* InteractingWithServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractingWithServer.swift; sourceTree = "<group>"; };
+		42953B701A215A0400CB01B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		42953B711A215A0400CB01B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		42953B881A21856700CB01B6 /* BackDirection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackDirection.png; sourceTree = "<group>"; };
+		42953B891A21856700CB01B6 /* ConstructButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructButton.png; sourceTree = "<group>"; };
+		42953B8A1A21856700CB01B6 /* ConstructButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructButtonSelected.png; sourceTree = "<group>"; };
+		42953B8B1A21856700CB01B6 /* MenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuButton.png; sourceTree = "<group>"; };
+		42953B901A21888600CB01B6 /* UserIconBlack80x80Quantz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserIconBlack80x80Quantz.png; sourceTree = "<group>"; };
+		42953B911A21888600CB01B6 /* UserIconBrown80x80Quantz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserIconBrown80x80Quantz.png; sourceTree = "<group>"; };
+		42953B9A1A219A8300CB01B6 /* RegionCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RegionCircle.png; sourceTree = "<group>"; };
+		42953B9D1A21A54C00CB01B6 /* BuyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButton.png; sourceTree = "<group>"; };
+		42953B9E1A21A54C00CB01B6 /* BuyButtonShort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuyButtonShort.png; sourceTree = "<group>"; };
+		42953B9F1A21A54C00CB01B6 /* CancelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelButton.png; sourceTree = "<group>"; };
+		42953BA01A21A54C00CB01B6 /* ConfirmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConfirmButton.png; sourceTree = "<group>"; };
+		42953BA11A21A54C00CB01B6 /* ConfirmPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConfirmPanel.png; sourceTree = "<group>"; };
+		42953BA71A21A75100CB01B6 /* CarterOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CarterOne.ttf; sourceTree = "<group>"; };
+		42953BA91A21A87B00CB01B6 /* BlackDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackDrop.png; sourceTree = "<group>"; };
+		42953BAC1A21AA0100CB01B6 /* AddBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBaseViewController.swift; sourceTree = "<group>"; };
+		42953BAE1A21B41E00CB01B6 /* UsefulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
+		42953BB41A21D09500CB01B6 /* OtherUserIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OtherUserIcon.png; sourceTree = "<group>"; };
+		42953BB51A21D09500CB01B6 /* UserIconCrown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserIconCrown.png; sourceTree = "<group>"; };
+		42953BB81A21D98100CB01B6 /* ViewTowerBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ViewTowerBlack.png; sourceTree = "<group>"; };
+		42953BB91A21D98100CB01B6 /* ViewTowerBrown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ViewTowerBrown.png; sourceTree = "<group>"; };
+		42953BBC1A22233500CB01B6 /* ConstructionsPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanel.png; sourceTree = "<group>"; };
+		42953BBE1A22235400CB01B6 /* BackwardButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackwardButton.png; sourceTree = "<group>"; };
+		42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuildingDisplayPanel.png; sourceTree = "<group>"; };
+		42953BC21A222F2500CB01B6 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoViewController.swift; sourceTree = "<group>"; };
+		42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionsPanelSquare.png; sourceTree = "<group>"; };
+>>>>>>> IOS-Kedan
 		8848AB5B1A20F99F00DBE6D7 /* ControlPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlPanel.png; path = UI/ControlPanel.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -165,18 +238,46 @@
 		426680E61A1E4BEE00ACD53D /* WalkingEmpire */ = {
 			isa = PBXGroup;
 			children = (
+				42953B9C1A21A54C00CB01B6 /* ConfirmPanel */,
+				42953B901A21888600CB01B6 /* UserIconBlack80x80Quantz.png */,
+				42953B911A21888600CB01B6 /* UserIconBrown80x80Quantz.png */,
 				4238D82C1A20EEB3006AE0A6 /* CoinBar.png */,
 				4238D82D1A20EEB3006AE0A6 /* MaterialBar.png */,
 				4238D82E1A20EEB3006AE0A6 /* PeopleBar.png */,
 				4238D82A1A20EC9E006AE0A6 /* circle.png */,
+				42953B881A21856700CB01B6 /* BackDirection.png */,
+				42953B891A21856700CB01B6 /* ConstructButton.png */,
+				42953B8A1A21856700CB01B6 /* ConstructButtonSelected.png */,
+				42953B8B1A21856700CB01B6 /* MenuButton.png */,
+				42953B9A1A219A8300CB01B6 /* RegionCircle.png */,
+				42953BA91A21A87B00CB01B6 /* BlackDrop.png */,
+				42953BB41A21D09500CB01B6 /* OtherUserIcon.png */,
+				42953BB51A21D09500CB01B6 /* UserIconCrown.png */,
+				42953BB81A21D98100CB01B6 /* ViewTowerBlack.png */,
+				42953BB91A21D98100CB01B6 /* ViewTowerBrown.png */,
+				42953BBC1A22233500CB01B6 /* ConstructionsPanel.png */,
+				42953BBE1A22235400CB01B6 /* BackwardButton.png */,
+				42953BC01A2223CC00CB01B6 /* BuildingDisplayPanel.png */,
+				42953BC61A223D6500CB01B6 /* ConstructionsPanelSquare.png */,
+				42953BC21A222F2500CB01B6 /* login.png */,
 				426680E91A1E4BEE00ACD53D /* AppDelegate.swift */,
 				426680EE1A1E4BEE00ACD53D /* ViewController.swift */,
-				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
+				42953BAC1A21AA0100CB01B6 /* AddBaseViewController.swift */,
+				42953BC41A22379D00CB01B6 /* BaseInfoViewController.swift */,
 				420537771A206EA9000AFB3A /* MapViewController.swift */,
+				4266A7C21A21398500DFD69F /* LoginViewController.swift */,
+				426680F01A1E4BEE00ACD53D /* Main.storyboard */,
+				4266A7AC1A21224900DFD69F /* ObjectsOnMap.swift */,
 				4238D8321A20F5F4006AE0A6 /* BuildViewController.swift */,
-				4238D8281A20971A006AE0A6 /* ResourcesViewController.swift */,
+				4266A7BB1A212D5000DFD69F /* DataManager.swift */,
+				42953B6E1A21529600CB01B6 /* InteractingWithServer.swift */,
+				42953BAE1A21B41E00CB01B6 /* UsefulFunctions.swift */,
+				4266A7B21A2128DA00DFD69F /* resource */,
 				420537791A206F47000AFB3A /* LocationManager.swift */,
-				4238D8261A20933C006AE0A6 /* MoneyResourcePopulation.swift */,
+				4266A7C01A2135D500DFD69F /* UserInformation.swift */,
+				42953B701A215A0400CB01B6 /* Reachability.h */,
+				42953B711A215A0400CB01B6 /* Reachability.m */,
+				42953B691A2150E000CB01B6 /* UserInformation.plist */,
 				426680F31A1E4BEE00ACD53D /* Images.xcassets */,
 				426680F51A1E4BEE00ACD53D /* LaunchScreen.xib */,
 				426680EB1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld */,
@@ -190,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				426680E81A1E4BEE00ACD53D /* Info.plist */,
+				42953BA71A21A75100CB01B6 /* CarterOne.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -209,6 +311,27 @@
 				426681011A1E4BEF00ACD53D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4266A7B21A2128DA00DFD69F /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				4238D8281A20971A006AE0A6 /* ResourcesViewController.swift */,
+				4238D8261A20933C006AE0A6 /* MoneyResourcePopulation.swift */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
+		42953B9C1A21A54C00CB01B6 /* ConfirmPanel */ = {
+			isa = PBXGroup;
+			children = (
+				42953B9D1A21A54C00CB01B6 /* BuyButton.png */,
+				42953B9E1A21A54C00CB01B6 /* BuyButtonShort.png */,
+				42953B9F1A21A54C00CB01B6 /* CancelButton.png */,
+				42953BA01A21A54C00CB01B6 /* ConfirmButton.png */,
+				42953BA11A21A54C00CB01B6 /* ConfirmPanel.png */,
+			);
+			path = ConfirmPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,15 +421,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+=======
+				42953BBF1A22235400CB01B6 /* BackwardButton.png in Resources */,
+>>>>>>> IOS-Kedan
 				8848AB5C1A20F99F00DBE6D7 /* ControlPanel.png in Resources */,
 				4238D82F1A20EEB3006AE0A6 /* CoinBar.png in Resources */,
+				42953BB61A21D09500CB01B6 /* OtherUserIcon.png in Resources */,
+				42953B6A1A2150E000CB01B6 /* UserInformation.plist in Resources */,
+				42953BBD1A22233500CB01B6 /* ConstructionsPanel.png in Resources */,
+				42953BA31A21A54C00CB01B6 /* BuyButtonShort.png in Resources */,
 				426680F21A1E4BEE00ACD53D /* Main.storyboard in Resources */,
+				42953B931A21888600CB01B6 /* UserIconBrown80x80Quantz.png in Resources */,
+				42953BA41A21A54C00CB01B6 /* CancelButton.png in Resources */,
+				42953B8D1A21856700CB01B6 /* ConstructButton.png in Resources */,
 				4238D8311A20EEB3006AE0A6 /* PeopleBar.png in Resources */,
+				42953BA81A21A75100CB01B6 /* CarterOne.ttf in Resources */,
+				42953BBA1A21D98100CB01B6 /* ViewTowerBlack.png in Resources */,
+				42953B8C1A21856700CB01B6 /* BackDirection.png in Resources */,
+				42953B8F1A21856700CB01B6 /* MenuButton.png in Resources */,
 				4238D8301A20EEB3006AE0A6 /* MaterialBar.png in Resources */,
+				42953BB71A21D09500CB01B6 /* UserIconCrown.png in Resources */,
 				426680F71A1E4BEE00ACD53D /* LaunchScreen.xib in Resources */,
+				42953B8E1A21856700CB01B6 /* ConstructButtonSelected.png in Resources */,
+				42953BA51A21A54C00CB01B6 /* ConfirmButton.png in Resources */,
+				42953BC31A222F2500CB01B6 /* login.png in Resources */,
 				4238D82B1A20EC9E006AE0A6 /* circle.png in Resources */,
+				42953BA61A21A54C00CB01B6 /* ConfirmPanel.png in Resources */,
+				42953BC11A2223CC00CB01B6 /* BuildingDisplayPanel.png in Resources */,
+				42953BA21A21A54C00CB01B6 /* BuyButton.png in Resources */,
+				42953B921A21888600CB01B6 /* UserIconBlack80x80Quantz.png in Resources */,
 				426680F41A1E4BEE00ACD53D /* Images.xcassets in Resources */,
+				42953BBB1A21D98100CB01B6 /* ViewTowerBrown.png in Resources */,
+				42953BAA1A21A87B00CB01B6 /* BlackDrop.png in Resources */,
 				42893B041A1E80BF00155C15 /* GoogleMaps.bundle in Resources */,
+				42953B9B1A219A8300CB01B6 /* RegionCircle.png in Resources */,
+				42953BC71A223D6500CB01B6 /* ConstructionsPanelSquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +474,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42953B6F1A21529600CB01B6 /* InteractingWithServer.swift in Sources */,
+				4266A7C31A21398500DFD69F /* LoginViewController.swift in Sources */,
 				426680EF1A1E4BEE00ACD53D /* ViewController.swift in Sources */,
+				4266A7BC1A212D5000DFD69F /* DataManager.swift in Sources */,
 				426680EA1A1E4BEE00ACD53D /* AppDelegate.swift in Sources */,
+				4266A7AD1A21224900DFD69F /* ObjectsOnMap.swift in Sources */,
+				42953BC51A22379D00CB01B6 /* BaseInfoViewController.swift in Sources */,
 				4205377A1A206F47000AFB3A /* LocationManager.swift in Sources */,
+				4266A7C11A2135D500DFD69F /* UserInformation.swift in Sources */,
 				4238D8331A20F5F4006AE0A6 /* BuildViewController.swift in Sources */,
 				4238D8291A20971A006AE0A6 /* ResourcesViewController.swift in Sources */,
+				42953B721A215A0400CB01B6 /* Reachability.m in Sources */,
 				4238D8271A20933C006AE0A6 /* MoneyResourcePopulation.swift in Sources */,
 				426680ED1A1E4BEE00ACD53D /* WalkingEmpire.xcdatamodeld in Sources */,
+				42953BAF1A21B41E00CB01B6 /* UsefulFunctions.swift in Sources */,
 				420537781A206EAA000AFB3A /* MapViewController.swift in Sources */,
+				42953BAD1A21AA0100CB01B6 /* AddBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
