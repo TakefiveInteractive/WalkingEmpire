@@ -95,6 +95,7 @@ class Main {
         );
 
         $this->slim->post('/update_location', function() {
+            (new \WalkingEmpire\UserManager())->updateLocation();
             echo json_encode((new \WalkingEmpire\BaseManager())->queryAllBases());
         });
 

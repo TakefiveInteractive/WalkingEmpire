@@ -78,7 +78,7 @@ class Verifier {
                 $userID = User::findUserIdByCookie($cookie);
                 $token = User::findFacebookIdByCookie($cookie);
 
-                App::setLoggedIn($userID, $token);
+                App::setLoggedIn($userID, $token, $cookie);
             }
         }
     }
@@ -111,7 +111,7 @@ class Verifier {
                 $this->setLoginCookie($cookie);
 
                 // set global fields
-                App::setLoggedIn($userID, $token);
+                App::setLoggedIn($userID, $token, $cookie);
 
                 return new Result(true, "Logged in");
             } else {

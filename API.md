@@ -61,6 +61,7 @@ Client request
 	"last_updated": 341294028		// epoch time in seconds
 }
 ```
+The client may sent 0 for last_updated during the first API call. Subsequent calls should specify the last_updated value provided by the server.
 
 Server response: Case I
 ```
@@ -80,7 +81,8 @@ Server response: Case I
 			"latitude": 2,
 			"longitude": 3.14159
 		}
-	}
+	},
+    "last_updated": 4891243240
 }
 ```
 Server response: Case II
@@ -112,7 +114,7 @@ Client request
 ```
 {
     "latitude": 0,
-    "longtitude": 0
+    "longitude": 0
 }
 ```
 
@@ -161,7 +163,9 @@ Server response
 }
 ```
 
-##Submit results after attacking a base
+##Submit results after attacking a base and failing
+The client will maintain no. of soldiers as of now. This is called when all soldiers are expended but the base is still standing.
+
 URL: `/fought_base`
 
 Method: POST
@@ -173,6 +177,44 @@ Client request
     "structures": [
         // as aforementioned
     ]
+}
+```
+
+Server response
+```
+{
+    "success": true
+}
+```
+
+##Taking over a base
+URL: `/takeover_base`
+
+Method: POST
+
+Client request
+```
+{
+    "baseID": "414301280"
+}
+```
+
+Server response
+```
+{
+    "success": true
+}
+```
+
+##Destroying a base
+URL: `/destroy_base`
+
+Method: POST
+
+Client request
+```
+{
+    "baseID": "48320948"
 }
 ```
 
