@@ -1,5 +1,8 @@
 <?php
 
+namespace WalkingEmpire\Building;
+
+
 include_once 'Resource.php';
 include_once 'War.php';
 

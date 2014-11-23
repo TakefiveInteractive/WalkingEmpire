@@ -1,6 +1,8 @@
 <?php
 
-include_once '../database/sqlutils.php';
+namespace WalkingEmpire;
+use WalkingEmpire\database\SQLUtils;
+use WalkingEmpire\Building\Structure;
 
 class Base {
 	private $baseId;
@@ -68,7 +70,13 @@ class Base {
 		foreach ($result as $tempRow)
 			$array[] = $tempRow['structure'];
 		
-		return $array;
+		$structureArr = array();
+		foreach ($array as $structureId) {
+			$structure = Structure::getStructure($structureId);
+			$structureArr[] = $structure;
+		}
+		
+		return $structureArr;
 	}
 	
 	function changeOwner($owner) {
