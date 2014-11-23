@@ -1,5 +1,7 @@
 <?php
 
+namespace WalkingEmpire\database;
+
 class SQLUtils {
 	
 	private $conn;
