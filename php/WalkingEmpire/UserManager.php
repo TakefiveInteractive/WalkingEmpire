@@ -53,6 +53,9 @@ class UserManager {
             if ($allUsers[$i]->getUsername() === $thisId) continue;
             // add to the array to be returned
             $location = $allUsers[$i]->getLocation();
+            // ignore users without location
+            if (empty($location['latitude']) || empty($location['longitude']))
+                continue;
             $returnArr[$allUsers[$i]->getUsername()] = new LocationInfo($location['latitude'], $location['longitude']);
         }
         

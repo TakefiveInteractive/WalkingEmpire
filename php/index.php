@@ -74,7 +74,8 @@ class Main {
             function() {
                 // obtain and set post data (JSON encoded)
                 $postData = file_get_contents('php://input');
-                error_log("BDB" . $postData . "CXC\n", 3, "/home/www-data/error.log");
+                error_log("Time: " . time() . ", path: " . $_SERVER['REQUEST_URI'] 
+                 . ", incoming: " . $postData . "\n", 3, "/home/www-data/error.log");
                 $decodedPostData = json_decode($postData);
  
                 // check if input is valid
