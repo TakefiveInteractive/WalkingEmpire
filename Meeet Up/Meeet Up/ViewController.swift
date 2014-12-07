@@ -19,6 +19,9 @@ class ViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabbar.selectedItem = tabbar.items![0] as? UITabBarItem
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     

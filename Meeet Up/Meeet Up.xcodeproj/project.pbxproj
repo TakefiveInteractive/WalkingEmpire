@@ -24,6 +24,9 @@
 		420745891A1C7FB500FFFD41 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420745861A1C7FB500FFFD41 /* FacebookSDK.framework */; };
 		4207458A1A1C7FB500FFFD41 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420745871A1C7FB500FFFD41 /* FBAudienceNetwork.framework */; };
 		4207458E1A1C7FCB00FFFD41 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4207458D1A1C7FCB00FFFD41 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		428642FE1A24F527009D3974 /* 2.pic_hd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 428642FD1A24F527009D3974 /* 2.pic_hd.jpg */; };
+		428643001A24F712009D3974 /* content.plist in Resources */ = {isa = PBXBuildFile; fileRef = 428642FF1A24F712009D3974 /* content.plist */; };
+		428643021A24FC07009D3974 /* post.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428643011A24FC07009D3974 /* post.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		4207458B1A1C7FCA00FFFD41 /* Meeet Up-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meeet Up-Bridging-Header.h"; sourceTree = "<group>"; };
 		4207458C1A1C7FCB00FFFD41 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4207458D1A1C7FCB00FFFD41 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		428642FD1A24F527009D3974 /* 2.pic_hd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.pic_hd.jpg; sourceTree = "<group>"; };
+		428642FF1A24F712009D3974 /* content.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = content.plist; sourceTree = "<group>"; };
+		428643011A24FC07009D3974 /* post.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = post.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +122,12 @@
 				4207457B1A1C7F1F00FFFD41 /* PeopleViewController.swift */,
 				4207457C1A1C7F1F00FFFD41 /* PostViewController.swift */,
 				4207457D1A1C7F1F00FFFD41 /* SelfViewController.swift */,
+				428642FF1A24F712009D3974 /* content.plist */,
 				4207455E1A1C7ED200FFFD41 /* Images.xcassets */,
 				420745601A1C7ED200FFFD41 /* LaunchScreen.xib */,
 				420745771A1C7F0200FFFD41 /* Main.storyboard */,
+				428643011A24FC07009D3974 /* post.xib */,
+				428642FD1A24F527009D3974 /* 2.pic_hd.jpg */,
 				420745561A1C7ED200FFFD41 /* Meeet_Up.xcdatamodeld */,
 				4207458C1A1C7FCB00FFFD41 /* Reachability.h */,
 				4207458D1A1C7FCB00FFFD41 /* Reachability.m */,
@@ -235,6 +244,9 @@
 			files = (
 				420745781A1C7F0200FFFD41 /* Main.storyboard in Resources */,
 				420745621A1C7ED200FFFD41 /* LaunchScreen.xib in Resources */,
+				428642FE1A24F527009D3974 /* 2.pic_hd.jpg in Resources */,
+				428643001A24F712009D3974 /* content.plist in Resources */,
+				428643021A24FC07009D3974 /* post.xib in Resources */,
 				4207455F1A1C7ED200FFFD41 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +470,7 @@
 				420745731A1C7ED200FFFD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		420745741A1C7ED200FFFD41 /* Build configuration list for PBXNativeTarget "Meeet UpTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +479,7 @@
 				420745761A1C7ED200FFFD41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

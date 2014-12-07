@@ -25,17 +25,29 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.23, zoom:18)
+        var camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(-33.86, longitude: 151.23, zoom:17)
     
         map = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+        map.mapType = kGMSTypeTerrain
         map.delegate = self
+        map.setMinZoom(1, maxZoom: 15)
         map.myLocationEnabled = false
+        map.indoorEnabled = false
+        map.settings.scrollGestures = true
+        
+        map.animateToViewingAngle(60)
         self.view = map
-
+        
+        
         // Do any additional setup after loading the view.
     }
 
-    
+    func mapView(mapView: GMSMapView!, willMove gesture: Bool) {
+
+        if gesture{
+            //resetPosition()
+        }
+    }
     
     func setUpMap(){
         
@@ -47,8 +59,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     }
     
     func setUpOverlay(){
-        var southWest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude + 0.001,LocationInfo.getCurrentLocation().coordinate.longitude + 0.00117);
-        var northEast: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude - 0.001,LocationInfo.getCurrentLocation().coordinate.longitude - 0.00117)
+        var southWest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude + 0.01,LocationInfo.getCurrentLocation().coordinate.longitude + 0.0117);
+        var northEast: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude - 0.01,LocationInfo.getCurrentLocation().coordinate.longitude - 0.0117)
         var overlayBounds: GMSCoordinateBounds = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
         
         constructionOverlay = GMSGroundOverlay(bounds: overlayBounds, icon: UIImage(named: "RegionCircle"))
@@ -70,7 +82,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
         
         (self.parentViewController as ViewController).buildBaseConfirm()
         
-        map.camera = GMSCameraPosition.cameraWithLatitude(coordinate.latitude + 0.00033, longitude: coordinate.longitude, zoom: 19)
+        map.camera = GMSCameraPosition.cameraWithLatitude(coordinate.latitude + 0.00033, longitude: coordinate.longitude, zoom: 15)
         
         tempBase = Base(user: UserInfo.userid, longitude: coordinate.longitude, latitude: coordinate.latitude, map: map, identifier: "")
         tempBase.map = nil
@@ -78,8 +90,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
         
     }
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-
-        if find(bases, marker as Base) > -1 {
+        
+    
+        if find(bases as [GMSMarker], marker) != nil {
             (self.parentViewController as ViewController).displayBaseInfo()
         }
         
@@ -93,12 +106,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     
     func resetPosition(){
         
-        map.camera = GMSCameraPosition.cameraWithLatitude(LocationInfo.getCurrentLocation().coordinate.latitude,
-            longitude: LocationInfo.getCurrentLocation().coordinate.longitude, zoom: 18)
+        map.animateToCameraPosition(GMSCameraPosition.cameraWithLatitude(LocationInfo.getCurrentLocation().coordinate.latitude,
+            longitude: LocationInfo.getCurrentLocation().coordinate.longitude, zoom: 15))
         
     }
     
     func updateLocation(){
+        
         
         if !setUpped{
             setUpMap()
@@ -107,6 +121,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
         
         general.position = LocationInfo.getCurrentLocation().coordinate
 
+       // resetPosition()
+        
         if constructionOverlay? != nil{
             updateOverlay()
         }
@@ -114,8 +130,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     }
     
     func updateOverlay(){
-        var southWest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude + 0.001,LocationInfo.getCurrentLocation().coordinate.longitude + 0.00117);
-        var northEast: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude - 0.001,LocationInfo.getCurrentLocation().coordinate.longitude - 0.00117)
+        var southWest: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude + 0.01,LocationInfo.getCurrentLocation().coordinate.longitude + 0.0117);
+        var northEast: CLLocationCoordinate2D = CLLocationCoordinate2DMake(LocationInfo.getCurrentLocation().coordinate.latitude - 0.01,LocationInfo.getCurrentLocation().coordinate.longitude - 0.0117)
         var overlayBounds: GMSCoordinateBounds = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
         constructionOverlay?.bounds = overlayBounds
 

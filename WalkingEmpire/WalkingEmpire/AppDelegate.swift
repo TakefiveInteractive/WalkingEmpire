@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyB36xxDqrIPbkEfUnv3qdfFc0Olk6isoKo")
+        GMSServices.provideAPIKey("AIzaSyDtknwDW2u8VCxU4nDgmRX3QqnotO4Lm44")
         
         LocationInfo.setup(self.window?.rootViewController as ViewController)
         
