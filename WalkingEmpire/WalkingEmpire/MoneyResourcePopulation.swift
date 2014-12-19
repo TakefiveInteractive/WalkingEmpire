@@ -9,22 +9,43 @@
 
 import UIKit
 
-var MoneyResoursePopulationManager: MoneyResourcePopulation = MoneyResourcePopulation()
+var Resources: MoneyResourcePopulation = MoneyResourcePopulation()
 
 class MoneyResourcePopulation: NSObject {
-    var money: Int = 0
-    var population: Int = 0
-    var resources: Int = 0
     
-    func setValues(moneyy: Int, populations: Int, resource: Int){
+    var resourcesController: ResourcesViewController!
+    
+    //total amount of these kinds of resources
+    var money: Double = 0
+    var naturalResources: Double = 0
+    
+    var population: Int = 0
+
+    //adding rate of these kind of resources
+    var moneyRate = 1.5
+    var naturalResourcesRate = 0.8
+    
+    func setValues(moneyy: Double, populations: Int, resource: Double){
         money = moneyy
         population = populations
-        resources = resource
+        naturalResources = resource
+        resourcesController = LocationInfo.viewController.resourcesView
+        
+        resourcesController.updateResources()
+
     }
     
-    func addValue(distance: Double){
-        money = money + Int(distance)
-        population = population + Int(distance) * 3
-        resources = resources + Int(distance) * 2
+    //increase the natural resources and money acoording to motion
+    func addResources(counter: Int){
+        money = money + Double(counter) * moneyRate
+        naturalResources = naturalResources + Double(counter) * naturalResourcesRate
+        
+        //update the resources on the view
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            // DO SOMETHING ON THE MAINTHREAD
+            self.resourcesController.updateResources()
+        })
     }
+    
 }

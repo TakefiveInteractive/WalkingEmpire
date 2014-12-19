@@ -14,23 +14,29 @@ var LocationInfo: LocationManager = LocationManager()
 
 class LocationManager: NSObject, CLLocationManagerDelegate{
    
-    var controller: ViewController!
-
-    var theLocations = [CLLocation]()
+    var viewController: ViewController!
     
-    var location:CLLocationManager = CLLocationManager()
+    var location:CLLocation!
     
-    func setup(control: ViewController){
+    var locationManager:CLLocationManager = CLLocationManager()
+    
+    var acceptBound = 0.02
+    
+    func setup(controller: ViewController){
         
-        controller = control
-        self.location.delegate = self
-        self.location.desiredAccuracy = kCLLocationAccuracyBest
-        self.location.requestAlwaysAuthorization()
+        viewController = controller
         
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+        
+        //For testing
+        start()
     }
     
     func start(){
-        self.location.startUpdatingLocation()
+        
+        self.locationManager.startUpdatingLocation()
         
     }
     
@@ -39,59 +45,45 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println(error)
+
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
-        for var index: Int = 0; index < locations.count; index++ {
-            theLocations.append(locations[index] as CLLocation)
-        }
-        
-        if theLocations.count > 1{
-            var distance = calculateDistance() * 10000
+        location = locations[locations.count - 1] as CLLocation
 
-            if distance > 1{
-                MoneyResoursePopulationManager.addValue(distance)
-                (controller.childViewControllers[1] as ResourcesViewController).updateResources()
-                removeAlldistance()
-                
-                if InteractingWithServer.getIfConnected(){
-                    InteractingWithServer.updateLocation()
-                }
-                
-            }
-        }
-        (controller.childViewControllers[0] as MapViewController).updateLocation()
-    }
-    
-    func removeAlldistance(){
-        while theLocations.count > 1
-        {
-            theLocations.removeAtIndex(0)
-        }
-    }
-    
-    func calculateDistance()->Double{
-        var x :Double = theLocations[0].coordinate.latitude - theLocations[theLocations.count - 1].coordinate.latitude
-        var y :Double = theLocations[0].coordinate.longitude - theLocations[theLocations.count - 1].coordinate.longitude
-
-        var distance = sqrt(x * x + y * y)
+        viewController.mapView.setToCenter(true)
         
-        return distance
-    }
-    
-    func hasLocation()->Bool{
-        if theLocations.count > 0{
-        
-            return true
-        
+        //setup the objects on the map if needed
+        //else update the position of the general
+        if objectsOnMap.myGeneral == nil{
+            
+            startGame()
+            
         }else{
-            return false
+            objectsOnMap.updateAllPosition(location)
         }
         
     }
-    func getCurrentLocation()->CLLocation{
-        return theLocations[theLocations.count - 1]
+    
+    func changeAcceptBound(zoomLevel: Double){
+        acceptBound = 2 * pow(2, 18 - zoomLevel) / 100
     }
+    
+    func startGame(){
+        
+        objectsOnMap.setup(location)
+        Resources.setValues(342.0, populations: 430, resource: 2343.0)
+        
+    }
+
+    // get the latest location stored in the phone
+    func getCurrentLocation()->CLLocation?{
+        if location != nil{
+            return location
+        }else{
+            return nil
+        }
+    }
+    
 }

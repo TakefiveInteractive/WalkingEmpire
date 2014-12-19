@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WalkingEmpire
 //
-//  Created by Kedan Li on 14/11/20.
+//  Created by Kedan Li on 14/12/12.
 //  Copyright (c) 2014年 Kedan Li. All rights reserved.
 //
 
@@ -10,34 +10,28 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyDtknwDW2u8VCxU4nDgmRX3QqnotO4Lm44")
-        
-        LocationInfo.setup(self.window?.rootViewController as ViewController)
+        //set up google map
+        GMSServices.provideAPIKey("AIzaSyAXbaDi7rbsNilJB1I2hk4gBlYsNyngKh8")
         
         DataManager.initializeUserInfo()
         
-        FBAppEvents.activateApp()
-        
-        FBSession.openActiveSessionWithAllowLoginUI(false)
-        
         UserInfo.setUp()
         
-        InteractingWithServer.getCurrentNet()
+        LocationInfo.setup(self.window?.rootViewController as ViewController)
+
+        if steps.setup(){
+            steps.start()
+        }
         // Override point for customization after application launch.
         return true
     }
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-    }
-    
+
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -25,9 +25,9 @@ class ResourcesViewController: UIViewController {
     }
 
     func updateResources(){
-        money.text = "\(MoneyResoursePopulationManager.money)"
-        resource.text = "\(MoneyResoursePopulationManager.resources)"
-        population.text = "\(MoneyResoursePopulationManager.population)"
+        money.text = "\(Int(Resources.money))"
+        resource.text = "\(Int(Resources.naturalResources))"
+        population.text = "\(Resources.population)"
 
     }
     

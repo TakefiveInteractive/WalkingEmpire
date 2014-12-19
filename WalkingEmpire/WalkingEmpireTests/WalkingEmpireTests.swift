@@ -2,7 +2,7 @@
 //  WalkingEmpireTests.swift
 //  WalkingEmpireTests
 //
-//  Created by Kedan Li on 14/11/20.
+//  Created by Kedan Li on 14/12/12.
 //  Copyright (c) 2014年 Kedan Li. All rights reserved.
 //
 

@@ -37,7 +37,7 @@ class InteractingWithServer: NSObject {
     class func updateLocation(){
         
         var result:[String: AnyObject] = [String: AnyObject]()
-        let info :[String: AnyObject] = ["latitude": LocationInfo.getCurrentLocation().coordinate.latitude, "longitude": LocationInfo.getCurrentLocation().coordinate.longitude]
+        let info :[String: AnyObject] = ["latitude": LocationInfo.getCurrentLocation()!.coordinate.latitude, "longitude": LocationInfo.getCurrentLocation()!.coordinate.longitude]
         InteractingWithServer.connectASynchoronous("/update_location", info: info, method:"POST")
 
     }
@@ -45,8 +45,6 @@ class InteractingWithServer: NSObject {
     class func addBase(coordinate: CLLocationCoordinate2D)->String{
         var result:[String: AnyObject] = [String: AnyObject]()
         let info :[String: AnyObject] = ["latitude": coordinate.latitude, "longitude": coordinate.longitude]
-        
-        println(info)
         
         result = InteractingWithServer.connectSynchoronous("/add_base", info: info, method:"POST")
         
@@ -76,7 +74,6 @@ class InteractingWithServer: NSObject {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         //println(request.description)
         var returnData = NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error: &error)!
-        //println(error)
         if (error == nil){
             
             var data = NSString(data: returnData, encoding: NSASCIIStringEncoding)
